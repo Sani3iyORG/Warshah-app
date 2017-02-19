@@ -7,13 +7,15 @@
     "start": "./node_modules/.bin/nodemon --ignore node_modules server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "moamar & duaa & marwa & kamal " ,
+  "author": "moamar & duaa & marwa & kamal ",
   "license": "ISC",
-  "dependencies":{
-    "express":"*",
-    "body-parser":"*",
-    "mongoose":"*"
-  },"devDependencies": {
+  "dependencies": {
+    "body-parser": "*",
+    "express": "*",
+    "jwt-simple": "^0.5.1",
+    "mongoose": "*"
+  },
+  "devDependencies": {
     "morgan": "^1.7.0"
   }
 }
