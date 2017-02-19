@@ -1,119 +1,110 @@
-<!doctype html>
+<!-- comment html, head and body tags to work with angular-->
+<!DOCTYPE html>
 <html>
 <head>
-  <link href="https://s3.amazonaws.com/codecademy-content/projects/bootstrap.min.css" rel="stylesheet" />
-  <link href='https://fonts.googleapis.com/css?family=Roboto:500,300,700,400' rel='stylesheet' type='text/css'>
-  <link href="css/login.css" rel="stylesheet" />
-  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
-  <script src="/bower_components/angular-route/angular-route.js"></script>
+  <title></title>
 </head>
 <body>
-<div class="logo" align="center">
-    <br>
-    <img src="image/Logo.gif"  width="220px" align="center" >
-    <hr class="omb_hrOr">
-  </div>
-   <div class="container">
+  <div class="container">
 
     <form class="well form-horizontal" action=" " method="post"  id="contact_form">
-<fieldset>
+      <fieldset>
 
-<!-- Form Name -->
-<legend><center><h2><b>Trade Worker Registration Form</b></h2></center></legend><br>
+        <!-- Form Name -->
+        <legend><center><h2><b>Trade Worker Registration Form</b></h2></center></legend><br>
 
-<!-- Text input-->
+        <!-- Text input-->
 
-<div class="form-group">
-  <label class="col-md-4 control-label">User Name</label>  
-  <div class="col-md-4 inputGroupContainer">
-  <div class="input-group">
-  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-  <input  name="username" placeholder="User Name" class="form-control"  type="text">
-    </div>
+        <div class="form-group">
+          <label class="col-md-4 control-label">User Name</label>  
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+              <input  name="username" placeholder="User Name" class="form-control"  type="text">
+            </div>
+          </div>
+        </div>
+        <!-- Text input-->
+
+        <div class="form-group">
+          <label class="col-md-4 control-label">Place</label>  
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
+              <input  name="place" placeholder="Place" class="form-control"  type="text">
+            </div>
+          </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group"> 
+          <label class="col-md-4 control-label">Cervice</label>
+          <div class="col-md-4 selectContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+              <select name="cervice" class="form-control selectpicker">
+                <option value="">Select your Cervice</option>
+                <option>Carpenter</option>
+                <option>Smith</option>
+                <option >Electricity technician</option>
+                <option >Plumber</option>
+                <option >Painter</option>
+
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label">Experiance</label>  
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-indent-left"></i></span>
+              <input  name="experiance" placeholder="Experiance" class="form-control"  type="text">
+            </div>
+          </div>
+        </div>
+
+        <!-- Text input-->
+
+
+        <div class="form-group">
+          <label class="col-md-4 control-label">E-Mail</label>  
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+              <input name="email" placeholder="E-Mail Address" class="form-control"  type="text">
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Text input-->
+
+        <div class="form-group">
+          <label class="col-md-4 control-label">Contact No.</label>  
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+              <input name="contact_no" placeholder="(962)" class="form-control" type="text">
+            </div>
+          </div>
+        </div>
+
+        <!-- Select Basic --> 
+
+        <!-- Button -->
+        <div class="form-group">
+          <label class="col-md-4 control-label"></label>
+          <div class="col-md-4">
+            <button type="submit" class="btn btn-lg btn-primary btn-block" >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSUBMIT <span class="glyphicon glyphicon-send"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+          </div>
+        </div>
+
+      </fieldset>
+    </form>
   </div>
-</div>
-<!-- Text input-->
-
-<div class="form-group">
-  <label class="col-md-4 control-label">Place</label>  
-  <div class="col-md-4 inputGroupContainer">
-  <div class="input-group">
-  <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
-  <input  name="place" placeholder="Place" class="form-control"  type="text">
-    </div>
-  </div>
-</div>
-
-<!-- Text input-->
-  <div class="form-group"> 
-  <label class="col-md-4 control-label">Cervice</label>
-    <div class="col-md-4 selectContainer">
-    <div class="input-group">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-    <select name="cervice" class="form-control selectpicker">
-      <option value="">Select your Cervice</option>
-      <option>Carpenter</option>
-      <option>Smith</option>
-      <option >Electricity technician</option>
-      <option >Plumber</option>
-      <option >Painter</option>
-      
-    </select>
-  </div>
-</div>
-</div>
-  
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label">Experiance</label>  
-  <div class="col-md-4 inputGroupContainer">
-  <div class="input-group">
-  <span class="input-group-addon"><i class="glyphicon glyphicon-indent-left"></i></span>
-  <input  name="experiance" placeholder="Experiance" class="form-control"  type="text">
-    </div>
-  </div>
-</div>
-
-<!-- Text input-->
-
-
-<div class="form-group">
-  <label class="col-md-4 control-label">E-Mail</label>  
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-  <input name="email" placeholder="E-Mail Address" class="form-control"  type="text">
-    </div>
-  </div>
-</div>
-
-
-<!-- Text input-->
-       
-<div class="form-group">
-  <label class="col-md-4 control-label">Contact No.</label>  
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-  <input name="contact_no" placeholder="(962)" class="form-control" type="text">
-    </div>
-  </div>
-</div>
-
-<!-- Select Basic --> 
-
-<!-- Button -->
-<div class="form-group">
-  <label class="col-md-4 control-label"></label>
-  <div class="col-md-4">
-    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button type="submit" class="btn btn-lg btn-primary btn-block" >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSUBMIT <span class="glyphicon glyphicon-send"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
-  </div>
-</div>
-
-</fieldset>
-</form>
-</div>
-    </div><!-- /.container -->
+</div><!-- /.container -->
 </body>
 </html>
