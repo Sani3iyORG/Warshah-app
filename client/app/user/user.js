@@ -4,12 +4,12 @@
 	$scope.user = {};
 	 $scope.ifuser=true;
 
-	$scope.signin = function ($scope.user) {
+	$scope.signin = function () {
 		User.signin($scope.user)
 		.then(function (data) {
 			$scope.ifuser=false;
 			$location.path('/');
-			$window.location.reload();
+			//$window.location.reload();
 		})
 		.catch(function (error) {
 			console.log(error);
