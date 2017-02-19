@@ -1,13 +1,13 @@
-<!-- comment html, head and body tags to work with angular-->
+<!-- comment html, head and body tags to work with angular
 <!DOCTYPE html>
 <html>
 <head>
   <title></title>
 </head>
-<body>
+<body> -->
   <div class="container">
 
-    <form class="well form-horizontal" action=" " method="post"  id="contact_form">
+    <form class="well form-horizontal" ng-submit='addhandworker()' id="contact_form">
       <fieldset>
 
         <!-- Form Name -->
@@ -20,7 +20,7 @@
           <div class="col-md-4 inputGroupContainer">
             <div class="input-group">
               <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-              <input  name="username" placeholder="User Name" class="form-control"  type="text">
+              <input  name="username" placeholder="User Name" class="form-control"  type="text" ng-model='tradeworker.username'>
             </div>
           </div>
         </div>
@@ -31,18 +31,18 @@
           <div class="col-md-4 inputGroupContainer">
             <div class="input-group">
               <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
-              <input  name="place" placeholder="Place" class="form-control"  type="text">
+              <input  name="place" placeholder="Place" class="form-control"  type="text" ng-model='tradeworker.place'>
             </div>
           </div>
         </div>
 
         <!-- Text input-->
         <div class="form-group"> 
-          <label class="col-md-4 control-label">Cervice</label>
+          <label class="col-md-4 control-label">Service</label>
           <div class="col-md-4 selectContainer">
             <div class="input-group">
               <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-              <select name="cervice" class="form-control selectpicker">
+              <select name="cervice" class="form-control selectpicker" ng-model='tradeworker.service'>
                 <option value="">Select your Cervice</option>
                 <option>Carpenter</option>
                 <option>Smith</option>
@@ -61,7 +61,7 @@
           <div class="col-md-4 inputGroupContainer">
             <div class="input-group">
               <span class="input-group-addon"><i class="glyphicon glyphicon-indent-left"></i></span>
-              <input  name="experiance" placeholder="Experiance" class="form-control"  type="text">
+              <input  name="experiance" placeholder="Experiance" class="form-control"  type="text" ng-model='tradeworker.experiance'>
             </div>
           </div>
         </div>
@@ -74,7 +74,7 @@
           <div class="col-md-4 inputGroupContainer">
             <div class="input-group">
               <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-              <input name="email" placeholder="E-Mail Address" class="form-control"  type="text">
+              <input name="email" placeholder="E-Mail Address" class="form-control"  type="text" ng-model='tradeworker.email'>
             </div>
           </div>
         </div>
@@ -87,7 +87,7 @@
           <div class="col-md-4 inputGroupContainer">
             <div class="input-group">
               <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-              <input name="contact_no" placeholder="(962)" class="form-control" type="text">
+              <input name="contact_no" placeholder="(962)" class="form-control" type="text" ng-model='tradeworker.phone'>
             </div>
           </div>
         </div>
@@ -106,5 +106,6 @@
     </form>
   </div>
 </div><!-- /.container -->
-</body>
+<!-- </body>
 </html>
+ -->
