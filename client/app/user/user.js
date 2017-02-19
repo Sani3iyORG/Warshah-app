@@ -2,7 +2,9 @@
 
 .controller('UserController',function ($scope,$http,$location,User){
 	$scope.user = {};
+	$scope.signupuser={};
 	 $scope.ifuser=true;
+	}
 
 	$scope.signin = function () {
 		User.signin($scope.user)
@@ -20,7 +22,6 @@
 	}
 
  	$scope.signup = function (newUser) {
-        newUser.username = $scope.username;
         User.signup(newUser)
         .then(function (user) {
             $scope.signin({
