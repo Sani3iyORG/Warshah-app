@@ -8,7 +8,7 @@ angular.module('myapp.services', [])
     }).then(function (resp) {
       return resp.data;
     });
-  },
+  }
 
   var signup = function (user) {
     return $http({
@@ -18,7 +18,7 @@ angular.module('myapp.services', [])
     }).then(function (resp) {
       return resp.data;
     });
-  },
+  }
 
   var signout = function () {
     $location.path('/signin');
@@ -41,7 +41,7 @@ angular.module('myapp.services', [])
     }).then(function (resp) {
       return resp.data
     })
-  },
+  }
 
   var getAll = function () {
     return $http({
