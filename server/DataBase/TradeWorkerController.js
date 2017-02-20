@@ -33,9 +33,7 @@ module.exports = {
 	},
 
 	signin: function (req, res, next) {
-		var username = req.body.username;
-		var password = req.body.password;
-		TradeWorker.find({username: req.body.username})
+		TradeWorker.find({email: req.body.email})
 		.then(function (user) {
 			if (!user) {
 				res.status(500).json({error:'TradeWorker already exist!'});

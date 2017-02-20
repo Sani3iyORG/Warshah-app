@@ -36,7 +36,7 @@ angular.module('myapp.services', [])
   var insert = function (Tradeworker) {
     return $http({
       method : 'POST',
-      url : '/api/insert',
+      url : '/api/signup',
       data : Tradeworker
     }).then(function (resp) {
       return resp.data
