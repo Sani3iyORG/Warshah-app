@@ -1,19 +1,26 @@
- angular.module('Warshah',['Warshah.UserController',
-	'Warshah.TradeworkerContr',
-	'Warshah.AdsCtrl',
-	'ngRoute',
-	'Warshah.services'
+ angular.module('myapp',[
+ 	'myapp.User',
+	'myapp.Tradeworker',
+	'myapp.services',
+	'ngRoute'
 	])
 
-.config(function($routeProvider){
-	$routeProvider.when('/adduser',{
+.config(function($routeProvider, $locationProvider){
+	$locationProvider.hashPrefix('');
+	$routeProvider
+	.when('/customerSignUp',{
 		templateUrl:'app/user/signup.html',                   
 		controller:'UserController'                  
 	})
-	.when('/addTradeworker',{
+	.when('/tradeworkerSignup',{
 		templateUrl:'app/tradworker/tradworker.html',
 		controller:'TradeworkerContr'                 
 	})
+	.when('/signin',{
+	templateUrl:'app/user/login.html',
+	controller:'UserController'                 
+	})
+
 	.when('/welcome',{
 		templateUrl:'app/welcome.html'              
 	})
