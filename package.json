@@ -4,7 +4,7 @@
   "description": "simple app",
   "main": "server.js",
   "scripts": {
-    "start": "./node_modules/.bin/nodemon --ignore node_modules server/server.js",
+    "start": "nodemon server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "moamar & duaa & marwa & kamal ",
@@ -16,6 +16,7 @@
     "mongoose": "*"
   },
   "devDependencies": {
-    "morgan": "^1.7.0"
+    "morgan": "^1.7.0",
+    "nodemon": "^1.11.0"
   }
 }
