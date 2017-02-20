@@ -4,6 +4,7 @@ var jwt = require('jwt-simple');
 module.exports = {
 	
 	signup : function (req, res, next) {
+
 		User.findOne({username : req.body.username})
  			.exec(function (error, user) {
 	 			if(user){
