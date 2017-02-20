@@ -6,7 +6,7 @@ module.exports = {
  			.exec(function (error, user) {
  				console.log(user)
 	 			if(user){
-	 				res.json(new Error('TradeWorker already exist!'));
+	 				res.status(500).json({error:'TradeWorker already exist!'});
 	 			}else{
 					var newTradeWorker = new TradeWorker ({
 						username : req.body.username,
@@ -21,7 +21,7 @@ module.exports = {
 			    		if(err){
 			       		 	res.status(500).send(err);
 			    		}else{
-			    			res.json(newTradeWorker)
+			    			res.status(200).json({token: newTradeWorker})
 			    		};
 					});
 				}

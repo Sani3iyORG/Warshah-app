@@ -13,7 +13,7 @@
 		controller:'UserController'                  
 	})
 	.when('/tradeworkerSignup',{
-		templateUrl:'app/tradworker/tradworker.html',
+		templateUrl:'app/tradeworker/tradeworker.html',
 		controller:'TradeworkerContr'                 
 	})
 	.when('/signin',{
@@ -25,7 +25,7 @@
 		templateUrl:'app/welcome.html'              
 	})
 	.when('/getTradeworker',{
-		templateUrl:'app/tradworker/tradworker.html',
+		templateUrl:'app/tradeworker/tradeworker.html',
 		controller:'TradeworkerContr'                 
 	})
 	.otherwise({
