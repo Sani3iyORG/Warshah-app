@@ -1,22 +1,12 @@
  angular.module('myapp.Tradeworker',[])
 
-.controller('TradeworkerContr',function ($scope,$http,$location,Tradeworker){
+ .controller('TradeworkerContr',function ($scope,$http,$location,Tradeworker){
   
-  $scope.getAllTradeworker = function(){
-    Tradeworker.getAll()
-    .then(function (data) {
-      $scope.allTradeWorker = data;
-      console.log(data)
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-  }
-
   $scope.addhandworker = function(){
+    console.log($scope.tradeworker);
     Tradeworker.insert($scope.tradeworker)
     .then(function (data) {
-        $scope.allTradeWorker = data;
+      $location.path('/welcome');
       console.log(data);
     })
     .catch(function (error) {

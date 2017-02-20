@@ -1,4 +1,5 @@
  angular.module('myapp',[
+ 	'myapp.Home',
  	'myapp.User',
 	'myapp.Tradeworker',
 	'myapp.services',
@@ -8,10 +9,10 @@
 .config(function($routeProvider, $locationProvider){
 	$locationProvider.hashPrefix('');
 	$routeProvider
-	.when('/customerSignUp',{
-		templateUrl:'app/user/signup.html',                   
-		controller:'UserController'                  
-	})
+	// .when('/customerSignUp',{
+	// 	templateUrl:'app/user/signup.html',                   
+	// 	controller:'UserController'                  
+	// })
 	.when('/tradeworkerSignup',{
 		templateUrl:'app/tradeworker/tradeworker.html',
 		controller:'TradeworkerContr'                 
@@ -22,11 +23,8 @@
 	})
 
 	.when('/welcome',{
-		templateUrl:'app/welcome.html'              
-	})
-	.when('/getTradeworker',{
-		templateUrl:'app/tradeworker/tradeworker.html',
-		controller:'TradeworkerContr'                 
+		templateUrl:'app/home/welcome.html',
+		controller: 'HomeCtrl'              
 	})
 	.otherwise({
 		redirectTo:'/welcome'

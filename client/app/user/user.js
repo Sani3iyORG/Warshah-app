@@ -6,10 +6,12 @@
 	$scope.ifuser=true;
 
 	$scope.signin = function () {
+		console.log("data");
 		User.signin($scope.user)
 		.then(function (data) {
+			console.log(data);
 			$scope.ifuser=false;
-			$location.path('/');
+			$location.path('/welcome');
 			//$window.location.reload();
 		})
 		.catch(function (error) {

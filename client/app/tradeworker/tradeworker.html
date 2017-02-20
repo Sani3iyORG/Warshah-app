@@ -1,111 +1,114 @@
-<!-- comment html, head and body tags to work with angular
-<!DOCTYPE html>
-<html>
-<head>
-  <title></title>
-</head>
-<body> -->
-  <div class="container">
+ <div class="container">
 
-    <form class="well form-horizontal" ng-submit='addhandworker()' id="contact_form">
-      <fieldset>
+  <form class="well form-horizontal" ng-submit='addhandworker()' id="contact_form">
+    <fieldset>
 
-        <!-- Form Name -->
-        <legend><center><h2><b>Trade Worker Registration Form</b></h2></center></legend><br>
+      <!-- Form Name -->
+      <legend><center><h2><b>Trade Worker Registration Form</b></h2></center></legend><br>
 
-        <!-- Text input-->
+      <!-- Text input-->
 
-        <div class="form-group">
-          <label class="col-md-4 control-label">User Name</label>  
-          <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
-              <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-              <input  name="username" placeholder="User Name" class="form-control"  type="text" ng-model='tradeworker.username'>
-            </div>
+      <div class="form-group">
+        <label class="col-md-4 control-label">User Name</label>  
+        <div class="col-md-4 inputGroupContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input  name="username" placeholder="your unique username.." class="form-control"  type="text" ng-model='tradeworker.username'>
           </div>
         </div>
-        <!-- Text input-->
+      </div>
 
-        <div class="form-group">
-          <label class="col-md-4 control-label">Place</label>  
-          <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
-              <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
-              <input  name="place" placeholder="Place" class="form-control"  type="text" ng-model='tradeworker.place'>
-            </div>
+      <!-- Text input-->
+
+      <div class="form-group">
+        <label class="col-md-4 control-label">Password</label>  
+        <div class="col-md-4 inputGroupContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+            <input  name="username" placeholder="enter your password here.." class="form-control"  type="password" ng-model='tradeworker.password'>
           </div>
         </div>
+      </div>
 
-        <!-- Text input-->
-        <div class="form-group"> 
-          <label class="col-md-4 control-label">Service</label>
-          <div class="col-md-4 selectContainer">
-            <div class="input-group">
-              <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-              <select name="cervice" class="form-control selectpicker" ng-model='tradeworker.service'>
-                <option value="">Select your Cervice</option>
-                <option>Carpenter</option>
-                <option>Smith</option>
-                <option >Electricity technician</option>
-                <option >Plumber</option>
-                <option >Painter</option>
+      <!-- Text input-->
 
-              </select>
-            </div>
+      <div class="form-group">
+        <label class="col-md-4 control-label">Place</label>  
+        <div class="col-md-4 inputGroupContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
+            <input  name="place" placeholder="enter your location.." class="form-control"  type="text" ng-model='tradeworker.place'>
           </div>
         </div>
+      </div>
 
-        <!-- Text input-->
-        <div class="form-group">
-          <label class="col-md-4 control-label">Experiance</label>  
-          <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
-              <span class="input-group-addon"><i class="glyphicon glyphicon-indent-left"></i></span>
-              <input  name="experiance" placeholder="Experiance" class="form-control"  type="text" ng-model='tradeworker.experiance'>
-            </div>
+      <!-- Text input-->
+      <div class="form-group"> 
+        <label class="col-md-4 control-label">Service</label>
+        <div class="col-md-4 selectContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+            <select name="service" class="form-control selectpicker" ng-model='tradeworker.service'>
+              <option value="">Select your service</option>
+              <option>Carpenter</option>
+              <option>Smith</option>
+              <option >Electricity technician</option>
+              <option >Plumber</option>
+              <option >Painter</option>
+
+            </select>
           </div>
         </div>
+      </div>
 
-        <!-- Text input-->
-
-
-        <div class="form-group">
-          <label class="col-md-4 control-label">E-Mail</label>  
-          <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
-              <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-              <input name="email" placeholder="E-Mail Address" class="form-control"  type="text" ng-model='tradeworker.email'>
-            </div>
+      <!-- Text input-->
+      <div class="form-group">
+        <label class="col-md-4 control-label">Experiance</label>  
+        <div class="col-md-4 inputGroupContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-indent-left"></i></span>
+            <input  name="experiance" placeholder="your level of experiance.." class="form-control"  type="text" ng-model='tradeworker.experiance'>
           </div>
         </div>
+      </div>
+
+      <!-- Text input-->
 
 
-        <!-- Text input-->
-
-        <div class="form-group">
-          <label class="col-md-4 control-label">Contact No.</label>  
-          <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
-              <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-              <input name="contact_no" placeholder="(962)" class="form-control" type="text" ng-model='tradeworker.phone'>
-            </div>
+      <div class="form-group">
+        <label class="col-md-4 control-label">E-Mail</label>  
+        <div class="col-md-4 inputGroupContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+            <input name="email" placeholder="E-Mail Address" class="form-control"  type="text" ng-model='tradeworker.email'>
           </div>
         </div>
+      </div>
 
-        <!-- Select Basic --> 
 
-        <!-- Button -->
-        <div class="form-group">
-          <label class="col-md-4 control-label"></label>
-          <div class="col-md-4">
-            <button type="submit" class="btn btn-lg btn-primary btn-block" >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSUBMIT <span class="glyphicon glyphicon-send"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+      <!-- Text input-->
+
+      <div class="form-group">
+        <label class="col-md-4 control-label">Contact No.</label>  
+        <div class="col-md-4 inputGroupContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+            <input name="contact_no" placeholder="(962)" class="form-control" type="text" ng-model='tradeworker.phone'>
           </div>
         </div>
+      </div>
 
-      </fieldset>
-    </form>
-  </div>
-</div><!-- /.container -->
-<!-- </body>
-</html>
- -->
+      <!-- Select Basic --> 
+
+      <!-- Button -->
+      <div class="form-group">
+        <label class="col-md-4 control-label"></label>
+        <div class="col-md-4">
+          <button type="submit" class="btn btn-lg btn-primary btn-block" >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSUBMIT <span class="glyphicon glyphicon-send"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+        </div>
+      </div>
+
+    </fieldset>
+  </form>
+</div>
+</div>
