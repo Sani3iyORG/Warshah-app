@@ -46,7 +46,7 @@ angular.module('myapp.services', [])
   var getAll = function () {
     return $http({
       method : 'GET',
-      url : '/api/insert'
+      url : '/api/all'
     }).then(function (resp) {
       return resp.data
     })

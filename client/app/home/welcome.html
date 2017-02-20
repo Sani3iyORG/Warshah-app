@@ -1,3 +1,4 @@
+<div class="container" >
  <div id="myCarousel" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">
@@ -38,4 +39,22 @@
     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
+</div>
+
+<div class="container">
+<div class="col-md-12" id="main"  ng-controller="HomeCtrl">
+  <div class="col-sm-6 col-md-4" ng-repeat="worker in tradeworkers |filter:search" > 
+    <div class="thumbnail">
+      <img ng-src="image/{{worker.service}}.JPG">
+      <div class="caption">
+        <h4>{{worker.username}}</h4>
+        <h5><span class="span">Phone: </span>{{worker.phone}}</h5>
+        <p><span class="span">Service: </span> {{worker.service}} <span class="span">Place: </span> {{worker.place}}</p>
+        <p><a href="#" class="btn btn-primary" role="button">Details</a> </p>
+      </div>
+    </div>
+  </div> 
+</div>
+</div>
+
 </div>

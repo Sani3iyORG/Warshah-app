@@ -1,4 +1,5 @@
  angular.module('myapp',[
+ 	'myapp.Home',
  	'myapp.User',
 	'myapp.Tradeworker',
 	'myapp.services',
@@ -22,11 +23,8 @@
 	})
 
 	.when('/welcome',{
-		templateUrl:'app/welcome.html'              
-	})
-	.when('/getTradeworker',{
-		templateUrl:'app/tradeworker/tradeworker.html',
-		controller:'TradeworkerContr'                 
+		templateUrl:'app/home/welcome.html',
+		controller: 'HomeCtrl'              
 	})
 	.otherwise({
 		redirectTo:'/welcome'
