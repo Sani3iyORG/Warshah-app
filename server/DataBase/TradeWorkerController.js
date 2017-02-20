@@ -15,7 +15,7 @@ module.exports = {
 			        	service : req.body.service,
 			        	phone : req.body.phone,
 			        	experiance : req.body.experiance,
-			        	picture: req.body.picture 
+			        	picture: req.body.picture
 					});
 					newTradeWorker.save(function(err, newTradeWorker){
 			    		if(err){
@@ -35,6 +35,36 @@ module.exports = {
 				res.status(200).send(allTradWorker);
 			}
 		});
+	},
+	addmsg:function(req,res){
+		TradeWorker.findOne({username : req.body.username})
+ 			.exec(function (error, user) {
+             if(!user){
+             	res.status(500).send('err');
+             }else{
+             	console.log(user.masseges)
+                user.masseges.push({user:req.body.user , place:req.body.place , phon:req.body.phon , msg:req.body.msg});
+                user.save(function(err,user){
+                	if(err){
+                		res.status(500).send(err)
+                	}else{
+                		res.json(user)
+                	}
+                })
+             }
+               
+      });
+	},
+	getmsg:function(req,res){
+		TradeWorker.findOne({username : req.body.username})
+ 			.exec(function (error, user) {
+             if(!user){
+             	res.status(500).send('err');
+             }else{
+                    res.json(user.masseges)
+                	}
+                })
 	}
+
 
 }

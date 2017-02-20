@@ -28,7 +28,11 @@ var TradeWorkerSchema = new mongoose.Schema({
 	},
 	picture:{
 		type     : String
-	}
+	},
+	masseges :[{user:String , 
+		       place : String , 
+		       phon: String ,
+		       msg:String}]
 
 }); 
 

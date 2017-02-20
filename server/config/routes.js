@@ -11,7 +11,9 @@ module.exports = function (app, express) {
 
 	//////////////////////////TradeWorker///////////////////////////////
 		app.post('/api/insert',TradeWorkerController.insert);
+		app.post('/api/addmsg',TradeWorkerController.addmsg);
 		app.get('/api/all',TradeWorkerController.getAllTradeWorker);
+		app.post('/api/getmsg',TradeWorkerController.getmsg);
 };
 
 
