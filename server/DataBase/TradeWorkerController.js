@@ -1,7 +1,8 @@
 var TradeWorker = require ('./TradeWorkerModel');
+var jwt = require('jwt-simple');
 
 module.exports = {
-	insert : function (req, res) {
+	signup: function (req, res) {
 		TradeWorker.findOne({username : req.body.username})
  			.exec(function (error, user) {
  				console.log(user)
@@ -10,6 +11,7 @@ module.exports = {
 	 			}else{
 					var newTradeWorker = new TradeWorker ({
 						username : req.body.username,
+						password : req.body.password,
 			        	email:req.body.email,
 			        	place : req.body.place,
 			        	service : req.body.service,
@@ -21,12 +23,35 @@ module.exports = {
 			    		if(err){
 			       		 	res.status(500).send(err);
 			    		}else{
-			    			res.status(200).json({token: newTradeWorker})
+			    				var token = jwt.encode(newTradeWorker, 'secret');
+		          				res.setHeader('x-access-token',token);
+		                        res.status(200).json({token: token, userId : newTradeWorker._id});
 			    		};
 					});
 				}
 			})
 	},
+
+	signin: function (req, res, next) {
+		var username = req.body.username;
+		var password = req.body.password;
+		TradeWorker.find({username: req.body.username})
+		.then(function (user) {
+			if (!user) {
+				res.status(500).json({error:'TradeWorker already exist!'});
+			}else{
+				if (user[0].password === req.body.password) {
+					var token = jwt.encode(user, 'secret');
+		            res.setHeader('x-access-token',token);
+		            res.json({token: token, userId : user._id});
+				}else{
+					res.json(user);
+				}
+			}
+		})
+	},
+
+
 	getAllTradeWorker : function (req, res) {
 		TradeWorker.find().exec(function (err, allTradWorker) {
 			if(err){
