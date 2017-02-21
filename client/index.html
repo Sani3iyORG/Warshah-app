@@ -45,13 +45,13 @@
 
   <ul class="nav navbar-nav">
    <li ng-hide="isLogged" class="dropdown">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Services <span class="caret"></span></a>
+    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Services <span class="caret"></span></a>
     <ul class="dropdown-menu">
-      <li><a href="#">Smith</a></li>
-      <li><a href="#">Plumber</a></li>
-      <li><a href="#">Painter</a></li>
-      <li><a href="#">Carpenter</a></li>
-      <li><a href="#">Electricity technician</a></li>
+      <li><a>Smith</a></li>
+      <li><a>Plumber</a></li>
+      <li><a>Painter</a></li>
+      <li><a>Carpenter</a></li>
+      <li><a>Electricity technician</a></li>
     </ul>
   </li>
   <li ng-hide="isLogged"><a href="#footer">contact us</a></li>
@@ -63,9 +63,10 @@
     ng-model='searchInput'>
   </div>
 </form>
-<ul class="nav navbar-nav navbar-right">
-  <li><a href="#/tradeworkerSignup">Signup</a></li>
-  <li><a href="#/signin">Signin</a></li>
+<ul ng-controller = "myappCtrl" class="nav navbar-nav navbar-right">
+  <li><a ng-hide="isLogged" href="#/tradeworkerSignup">Sign Up</a></li>
+  <li><a ng-hide="isLogged" href="#/signin">Sign In</a></li>
+  <li><a ng-click="logOut()" ng-show="isLogged" href="#/welcome">Sign Out</a></li>
 </ul>
 </div>
 </nav>

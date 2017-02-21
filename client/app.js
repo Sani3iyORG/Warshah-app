@@ -40,7 +40,7 @@
 		redirectTo:'/welcome'
 	})
 	
-}).factory('Auth', function ($http, $location, $window) {
+}).factory('Auth', function ($http, $location, $window, $rootScope) {
 
   var auth = {};
   auth.saveToken = function (token){
@@ -64,6 +64,8 @@
   };
 
   auth.logOut = function(){
+  	console.log('gfaklsfjlkashflkSHFDklsfhl');
+  	$rootScope.isLogged = false;
     $window.localStorage.removeItem('tradeworker');
   };
 
@@ -83,11 +85,26 @@
 
   return auth;  
 })
+.controller('myappCtrl',function ($scope, $rootScope, $http, $location, User, Auth){
+	$scope.logOut = function(){
+		Auth.logOut();
+	}
+})
 .run(function ($rootScope, $location, Auth,) {
 	$rootScope.isLogged = false;
+	var goTo;
   $rootScope.$on('$routeChangeStart', function (evt, next, current) {
-    if (next.$$route && next.$$route.authenticate && !Auth.isAuth()) {
-      $location.path('/signin');
+  	//console.log(Auth.isAuth());
+    if (next.$$route && ( next.$$route.originalPath === "/profile" || next.$$route.originalPath === '/messages' ) && !Auth.isAuth()) {
+    	console.log('hellooooooooooooooo');
+      $location.path('signin');
+    } else {
+    	if(next.$$route.originalPath){
+    		$location.path(next.$$route.originalPath);
+    	}else{
+    		$location.path('/welcome');
+    	}
+    	
     }
   });
 });

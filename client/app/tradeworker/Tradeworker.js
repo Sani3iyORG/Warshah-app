@@ -7,7 +7,7 @@
     Tradeworker.insert($scope.tradeworker)
     .then(function (data) {
       Auth.saveToken(data.token);
-      $rootScope.isLogged = true
+      $rootScope.isLogged = true;
       $location.path('/profile');
       console.log(data)
     })
