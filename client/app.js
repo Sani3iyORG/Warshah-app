@@ -11,10 +11,6 @@
 .config(function($routeProvider, $locationProvider){
 	$locationProvider.hashPrefix('');
 	$routeProvider
-	// .when('/customerSignUp',{
-	// 	templateUrl:'app/user/signup.html',                   
-	// 	controller:'UserController'                  
-	// })
 	.when('/tradeworkerSignup',{
 		templateUrl:'app/tradeworker/tradeworker.html',
 		controller:'TradeworkerContr'                 
@@ -64,7 +60,6 @@
   };
 
   auth.logOut = function(){
-  	console.log('gfaklsfjlkashflkSHFDklsfhl');
   	$rootScope.isLogged = false;
     $window.localStorage.removeItem('tradeworker');
   };
@@ -96,7 +91,7 @@
   $rootScope.$on('$routeChangeStart', function (evt, next, current) {
   	//console.log(Auth.isAuth());
     if (next.$$route && ( next.$$route.originalPath === "/profile" || next.$$route.originalPath === '/messages' ) && !Auth.isAuth()) {
-    	console.log('hellooooooooooooooo');
+    	//console.log('hellooooooooooooooo');
       $location.path('signin');
     } else {
     	if(next.$$route.originalPath){
