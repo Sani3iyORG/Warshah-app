@@ -43,7 +43,8 @@
 
 <div class="container">
 <div class="col-md-12" id="main"  ng-controller="HomeCtrl">
-  <div class="col-sm-6 col-md-4" ng-repeat="worker in tradeworkers |filter:search" > 
+  <div class="col-sm-6 col-md-4" ng-repeat="worker in tradeworkers |filter: $parent.searchInput" >
+    {{$parent.searchInput}} 
     <div class="thumbnail">
       <img ng-src="image/{{worker.service}}.JPG">
       <div class="caption">
