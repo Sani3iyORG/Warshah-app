@@ -1,5 +1,6 @@
 var TradeWorker = require ('./TradeWorkerModel');
 var jwt = require('jwt-simple');
+var utils = require('../config/utils.js');
 
 module.exports = {
 	signup: function (req, res) {
@@ -59,14 +60,24 @@ module.exports = {
 			}
 		});
 	},
+	getProfile : function (req, res) {
+		TradeWorker.findOne({_id:req.user._id})
+		.exec(function (err, worker) {
+			if(err){
+				res.status(500).send('err');
+			}else{
+				res.status(200).send(worker);
+			}
+		});
+	},
 	addmsg:function(req,res){
-		TradeWorker.findOne({username : req.body.username})
+		TradeWorker.findOne({workeremail : req.body.workeremail})
  			.exec(function (error, user) {
              if(!user){
              	res.status(500).send('err');
              }else{
              	console.log(user.masseges)
-                user.masseges.push({user:req.body.user , place:req.body.place , phon:req.body.phon , msg:req.body.msg});
+                user.masseges.push({user:req.body.user , place:req.body.place ,email:req.body.email, phon:req.body.phon , msg:req.body.msg});
                 user.save(function(err,user){
                 	if(err){
                 		res.status(500).send(err)
@@ -79,7 +90,7 @@ module.exports = {
       });
 	},
 	getmsg:function(req,res){
-		TradeWorker.findOne({username : req.body.username})
+		TradeWorker.findOne({_id : req.user._id})
  			.exec(function (error, user) {
              if(!user){
              	res.status(500).send('err');
