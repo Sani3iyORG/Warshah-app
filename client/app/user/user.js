@@ -8,7 +8,6 @@
 	$scope.signin = function () {
 		User.signin($scope.user)
 		.then(function (data) {
-			console.log(data);
 			$scope.ifuser=false;
 			Auth.saveToken(data.token);
 			$rootScope.isLogged = true;
