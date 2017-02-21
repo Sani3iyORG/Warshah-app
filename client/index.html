@@ -5,6 +5,8 @@
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/login.css" />
+  <link rel="stylesheet" href="/css/sideNav.css" />
+
 
   <!-- script link -->
   <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script> -->
@@ -12,8 +14,11 @@
   <script src="/bower_components/angular/angular.js"></script>
   <script src="/bower_components/angular-route/angular-route.js"></script>
   <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="navScript.js"></script>
   <script src="/app/services/services.js"></script>
   <script src="/app/user/user.js"></script>
+  <script src="/app/profile/profile.js"></script>
+  <script src="/app/messages/messages.js"></script>
   <script src="/app/tradeworker/Tradeworker.js"></script>
   <script src="/app/home/welcome.js"></script>
   <script src="/app.js"></script>
@@ -37,20 +42,20 @@
 </div>
 <!-- Collect the nav links, forms, and other content for toggling -->
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
   <ul class="nav navbar-nav">
-   <!--  <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li> -->
-   <li class="dropdown">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Services <span class="caret"></span></a>
+   <li ng-hide="isLogged" class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Services <span class="caret"></span></a>
     <ul class="dropdown-menu">
-      <li><a href="#">Smith</a></li>
-      <li><a href="#">Plumber</a></li>
-      <li><a href="#">Painter</a></li>
-      <li><a href="#">Carpenter</a></li>
-      <li><a href="#">Electricity technician</a></li>
-      
+      <li><a>Smith</a></li>
+      <li><a>Plumber</a></li>
+      <li><a>Painter</a></li>
+      <li><a>Carpenter</a></li>
+      <li><a>Electricity technician</a></li>
     </ul>
   </li>
-  <li><a href="#footer">contact us</a></li>
+  <li ng-hide="isLogged"><a href="#footer">contact us</a></li>
+  <li ng-show="isLogged"> <a onclick="openNav()">&#9776; open</a> </li>
 </ul>
 <form class="navbar-form navbar-left">
   <div class="form-group">
@@ -58,12 +63,22 @@
     ng-model='searchInput'>
   </div>
 </form>
-<ul class="nav navbar-nav navbar-right">
-  <li><a href="#/tradeworkerSignup">Signup</a></li>
-  <li><a href="#/signin">Signin</a></li>
+<ul ng-controller = "myappCtrl" class="nav navbar-nav navbar-right">
+  <li><a ng-hide="isLogged" href="#/tradeworkerSignup">Sign Up</a></li>
+  <li><a ng-hide="isLogged" href="#/signin">Sign In</a></li>
+  <li><a ng-click="logOut()" ng-show="isLogged" href="#/welcome">Sign Out</a></li>
 </ul>
 </div>
 </nav>
+
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="#/profile">Profile</a>
+  <a href="#/messages">Messages</a>
+</div>
+
+
+
 
 <!-- the ng-view directive is where our templates will be loaded into when naviagted to -->
 <div ng-view></div>

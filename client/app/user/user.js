@@ -1,17 +1,18 @@
  angular.module('myapp.User',[])
 
-.controller('UserController',function ($scope,$http,$location,User){
+.controller('UserController',function ($scope, $rootScope, $http,$location,User, Auth){
 	$scope.user = {};
 	$scope.signupuser={};
 	$scope.ifuser=true;
 
 	$scope.signin = function () {
-		console.log("data");
 		User.signin($scope.user)
 		.then(function (data) {
 			console.log(data);
 			$scope.ifuser=false;
-			$location.path('/welcome');
+			Auth.saveToken(data.token);
+			$rootScope.isLogged = true;
+			$location.path('/profile');
 			//$window.location.reload();
 		})
 		.catch(function (error) {
