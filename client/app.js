@@ -26,6 +26,12 @@
 		templateUrl:'app/home/welcome.html',
 		controller: 'HomeCtrl'              
 	})
+	.when('/messages',{
+		templateUrl: 'app/messages/messages.html'
+	})
+	.when('/profile',{
+		templateUrl: 'app/profile/profile.html'
+	})
 	.otherwise({
 		redirectTo:'/welcome'
 	})
