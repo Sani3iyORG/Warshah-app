@@ -17,7 +17,7 @@
 		.catch(function (error) {
 			console.log(error);
 			$scope.ifuser=false;
-			$scope.username="";
+			$scope.email="";
 			$scope.password="";
 		})
 	}
