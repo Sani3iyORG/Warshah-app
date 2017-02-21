@@ -34,7 +34,7 @@ var TradeWorkerSchema = new mongoose.Schema({
 		type     : String
 	},
 	masseges :[{user:String ,
-	            email:String , 
+	            userEmail:String , 
 		        place : String , 
 		        phon: String ,
 		        msg:String}]

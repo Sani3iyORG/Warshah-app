@@ -4,16 +4,18 @@ var utils = require('../config/utils.js');
 
 module.exports = {
 	signup: function (req, res) {
+		console.log(req.body)
 		TradeWorker.findOne({username : req.body.username})
  			.exec(function (error, user) {
- 				console.log(user)
+ 				//console.log(user)
 	 			if(user){
+	 				console.log(user)
 	 				res.status(500).json({error:'TradeWorker already exist!'});
 	 			}else{
 					var newTradeWorker = new TradeWorker ({
 						username : req.body.username,
 						password : req.body.password,
-			        	email:req.body.email,
+			        	workeremail:req.body.workeremail,
 			        	place : req.body.place,
 			        	service : req.body.service,
 			        	phone : req.body.phone,
@@ -61,7 +63,7 @@ module.exports = {
 		});
 	},
 	getProfile : function (req, res) {
-		TradeWorker.findOne({_id:req.user._id})
+		TradeWorker.findOne({username:req.body.username})
 		.exec(function (err, worker) {
 			if(err){
 				res.status(500).send('err');
@@ -71,27 +73,22 @@ module.exports = {
 		});
 	},
 	updateProfile:function(req,res){
-		TradeWorker.findById(req.user._id, function (err, worker) {  
-           if (err) {
-               res.status(500).send(err);
-            } else {
-                worker.username = req.body.username;
-				worker.password = req.body.password;
-			    worker.email=req.body.email;
-			    worker.place =req.body.place;
-			    worker.service = req.body.service;
-			    worker.phone = req.body.phone;
-			    worker.experiance = req.body.experiance;
-			    worker.picture = req.body.picture;
-                worker.save(function (err, worker) {
-                       if (err) {
-                          res.status(500).send(err)
-                          }
-                          res.json(worker);
-                        });
-
-        }
-});
+        TradeWorker.findOne({_id: req.user._id},function (error, worker) {
+ 				console.log(req.body)
+	 			if(!worker){
+	 				console.log("xxxxx")
+	 				res.status(500).json({error:'TradeWorker already exist!'});
+	 			}else{
+	 		   
+	 		TradeWorker.update(worker,req.body,function(err,newworker){
+	 			if(err){
+				res.status(500).send('err');
+			}else{
+				res.status(200).send(worker);
+			}
+       })
+	 	}
+	 })
 
 	},
 	addmsg:function(req,res){
@@ -101,7 +98,7 @@ module.exports = {
              	res.status(500).send('err');
              }else{
              	console.log(user.masseges)
-                user.masseges.push({user:req.body.user , place:req.body.place ,email:req.body.email, phon:req.body.phon , msg:req.body.msg});
+                user.masseges.push({user:req.body.user , place:req.body.place ,userEmail:req.body.userEmail, phon:req.body.phon , msg:req.body.msg});
                 user.save(function(err,user){
                 	if(err){
                 		res.status(500).send(err)
