@@ -37,19 +37,19 @@ module.exports = {
 
 	signin: function (req, res, next) {
 		TradeWorker.find({email: req.body.email})
-		.then(function (user) {
-			if (!user) {
-				res.status(500).json({error:'TradeWorker already exist!'});
-			}else{
-				if (user[0].password === req.body.password) {
-					var token = jwt.encode(user, 'secret');
-		            res.setHeader('x-access-token',token);
-		            res.json({token: token, userId : user._id});
-				}else{
-					res.json(user);
-				}
-			}
-		})
+		          .then(function (user) {
+			          if (!user) {
+				        res.status(500).json({error:'TradeWorker already exist!'});
+			        }else{
+				     if (user[0].password === req.body.password) {
+					    var token = jwt.encode(user, 'secret');
+		                res.setHeader('x-access-token',token);
+		                res.json({token: token, userId : user._id});
+				    }else{
+					   res.json(user);
+				  }
+			  }
+		  })
 	},
 
 
@@ -63,14 +63,14 @@ module.exports = {
 		});
 	},
 	getProfile : function (req, res) {
-		TradeWorker.findOne({username:req.body.username})
-		.exec(function (err, worker) {
-			if(err){
-				res.status(500).send('err');
-			}else{
-				res.status(200).send(worker);
-			}
-		});
+		TradeWorker.findOne({_id:req.user._id})
+		          .exec(function (err, worker) {
+			        if(err){
+				       res.status(500).send('err');
+			        }else{
+				      res.status(200).send(worker);
+			        }
+		     });
 	},
 	updateProfile:function(req,res){
         TradeWorker.findOne({_id: req.user._id},function (error, worker) {
@@ -78,18 +78,16 @@ module.exports = {
 	 			if(!worker){
 	 				console.log("xxxxx")
 	 				res.status(500).json({error:'TradeWorker already exist!'});
-	 			}else{
-	 		   
-	 		TradeWorker.update(worker,req.body,function(err,newworker){
-	 			if(err){
-				res.status(500).send('err');
-			}else{
-				res.status(200).send(worker);
-			}
-       })
-	 	}
-	 })
-
+	 			}else{   
+	 		    TradeWorker.update(worker,req.body,function(err,newworker){
+	 			   if(err){
+				      res.status(500).send('err');
+			        }else{
+				     res.status(200).send(newworker);
+			       }
+               })
+	 	    }
+	    })
 	},
 	addmsg:function(req,res){
 		TradeWorker.findOne({workeremail : req.body.workeremail})
@@ -112,15 +110,14 @@ module.exports = {
 	},
 	getmsg:function(req,res){
 		TradeWorker.findOne({_id : req.user._id})
- 			.exec(function (error, user) {
-             if(!user){
-             	res.status(500).send('err');
-             }else{
-                    res.json(user.masseges)
+ 			      .exec(function (error, worker) {
+                   if(!worker){
+             	     res.status(500).send('err');
+                    }else{
+                     res.json(worker.masseges)
                 	}
                 })
-
-	    }
+	        }
 
 
 }
