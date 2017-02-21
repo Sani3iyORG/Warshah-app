@@ -70,6 +70,30 @@ module.exports = {
 			}
 		});
 	},
+	updateProfile:function(req,res){
+		TradeWorker.findById(req.user._id, function (err, worker) {  
+           if (err) {
+               res.status(500).send(err);
+            } else {
+                worker.username = req.body.username;
+				worker.password = req.body.password;
+			    worker.email=req.body.email;
+			    worker.place =req.body.place;
+			    worker.service = req.body.service;
+			    worker.phone = req.body.phone;
+			    worker.experiance = req.body.experiance;
+			    worker.picture = req.body.picture;
+                worker.save(function (err, worker) {
+                       if (err) {
+                          res.status(500).send(err)
+                          }
+                          res.json(worker);
+                        });
+
+        }
+});
+
+	},
 	addmsg:function(req,res){
 		TradeWorker.findOne({workeremail : req.body.workeremail})
  			.exec(function (error, user) {
@@ -98,7 +122,8 @@ module.exports = {
                     res.json(user.masseges)
                 	}
                 })
-	}
+
+	    }
 
 
 }
