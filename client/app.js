@@ -2,6 +2,8 @@
  	'myapp.Home',
  	'myapp.User',
 	'myapp.Tradeworker',
+	'myapp.Profile',
+	'myapp.Messages',
 	'myapp.services',
 	'ngRoute'
 	])
@@ -27,10 +29,12 @@
 		controller: 'HomeCtrl'              
 	})
 	.when('/messages',{
-		templateUrl: 'app/messages/messages.html'
+		templateUrl: 'app/messages/messages.html',
+		controller: 'MessagesCtrl'
 	})
 	.when('/profile',{
-		templateUrl: 'app/profile/profile.html'
+		templateUrl: 'app/profile/profile.html',
+		controller: 'ProfileCtrl'
 	})
 	.otherwise({
 		redirectTo:'/welcome'
@@ -79,7 +83,8 @@
 
   return auth;  
 })
-.run(function ($rootScope, $location, Auth) {
+.run(function ($rootScope, $location, Auth,) {
+	$rootScope.isLogged = false;
   $rootScope.$on('$routeChangeStart', function (evt, next, current) {
     if (next.$$route && next.$$route.authenticate && !Auth.isAuth()) {
       $location.path('/signin');

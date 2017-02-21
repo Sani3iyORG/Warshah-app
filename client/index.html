@@ -17,6 +17,8 @@
   <script src="navScript.js"></script>
   <script src="/app/services/services.js"></script>
   <script src="/app/user/user.js"></script>
+  <script src="/app/profile/profile.js"></script>
+  <script src="/app/messages/messages.js"></script>
   <script src="/app/tradeworker/Tradeworker.js"></script>
   <script src="/app/home/welcome.js"></script>
   <script src="/app.js"></script>
@@ -42,7 +44,7 @@
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
   <ul class="nav navbar-nav">
-   <li class="dropdown">
+   <li ng-hide="isLogged" class="dropdown">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Services <span class="caret"></span></a>
     <ul class="dropdown-menu">
       <li><a href="#">Smith</a></li>
@@ -52,8 +54,8 @@
       <li><a href="#">Electricity technician</a></li>
     </ul>
   </li>
-  <li><a href="#footer">contact us</a></li>
-  <li ng-if="isLogged"> <a onclick="openNav()">&#9776; open</a> </li>
+  <li ng-hide="isLogged"><a href="#footer">contact us</a></li>
+  <li ng-show="isLogged"> <a onclick="openNav()">&#9776; open</a> </li>
 </ul>
 <form class="navbar-form navbar-left">
   <div class="form-group">
