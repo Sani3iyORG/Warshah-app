@@ -1,4 +1,4 @@
-<div class="container" >
+  <div class="container" >
  <div id="myCarousel" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">
@@ -44,7 +44,6 @@
 <div class="container">
 <div class="col-md-12" id="main"  ng-controller="HomeCtrl">
   <div class="col-sm-6 col-md-4" ng-repeat="worker in tradeworkers |filter: $parent.searchInput" >
-    {{$parent.searchInput}} 
     <div class="thumbnail">
       <img ng-src="image/{{worker.service}}.JPG">
       <div class="caption">
