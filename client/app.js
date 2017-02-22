@@ -5,6 +5,7 @@
 	'myapp.Profile',
 	'myapp.Messages',
 	'myapp.services',
+  'myapp.sendMessage',
 	'ngRoute'
 	])
 
