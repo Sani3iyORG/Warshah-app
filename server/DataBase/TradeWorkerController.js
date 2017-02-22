@@ -91,15 +91,14 @@ signup: function (req, res) {
 		TradeWorker.findOne({workeremail : req.body.workeremail})
  			.exec(function (error, user) {
              if(!user){
-             	res.status(500).send('err');
+             	res.status(500).send('some thing went wrong');
              }else{
-             	console.log(user.masseges)
                 user.masseges.push({user:req.body.user , place:req.body.place ,userEmail:req.body.userEmail, phon:req.body.phon , msg:req.body.msg});
                 user.save(function(err,user){
                 	if(err){
-                		res.status(500).send(err)
+                		res.status(500).send('some thing went wrong')
                 	}else{
-                		res.json(user)
+                		res.status(200).send('massege has been sent successfully')
                 	}
                 })
              }

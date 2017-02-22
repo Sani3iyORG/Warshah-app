@@ -43,14 +43,16 @@
 <div class="container">
 <div class="col-md-12" id="main"  ng-controller="HomeCtrl">
   <div class="col-sm-6 col-md-4" ng-repeat="worker in tradeworkers |filter: $parent.searchInput" >
-    <div class="thumbnail">
+    <div class="thumbnail col-sm-11">
       <img ng-src="image/{{worker.service}}.JPG">
       <div class="caption">
         <h4>{{worker.username}}</h4>
         <h5><span class="span">Phone: </span>{{worker.phone}}</h5>
         <p><span class="span">Service: </span> {{worker.service}} <span class="span">Place: </span> {{worker.place}}</p>
-        <p><a href="#" class="btn btn-primary" role="button">Details</a> </p>
-        <button class="btn btn-warning" ng-click="sendMessage(worker._id)">Custom Dialog</button>      
+        <div>
+        <p><a href="#" class="col-sm-4 btn btn-primary" role="button">Details</a> </p>
+        <button class="col-sm-6 btn btn-success pull-right" ng-click="sendMessage(worker.workeremail)">send message</button>      
+        </div>
       </div>
     </div>
   </div> 
