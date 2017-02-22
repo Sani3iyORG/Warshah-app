@@ -33,7 +33,7 @@ signup: function (req, res) {
 	},
 
 	signin: function (req, res) {
-		TradeWorker.findOne({workeremail: req.body.workeremail})
+		TradeWorker.findOne({workeremail: req.body.email})
 		           .exec(function (err,user) {
 			          if(err){
 				         res.status(500).send('err');
@@ -108,12 +108,10 @@ signup: function (req, res) {
 	getmsg:function(req,res){
 		TradeWorker.findById(req.user._id,function(err,worker){
                    if(err){
-             	     res.status(500).send('err');
+             	     res.status(500).send('sorry, you haven\'t any new messages');
                     }else{
-                    	console.log(worker)
                      res.json(worker.masseges)
                 	}
-
 		})         
 	},
 
