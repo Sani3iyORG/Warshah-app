@@ -1,7 +1,7 @@
 var express = require('express')
 var mongoose = require('mongoose');
 var server = require('http').createServer(app);//
-var port = process.env.PORT || 3000;//
+var port = process.env.PORT || 8181;//
 var app = express();
 
 
@@ -21,6 +21,6 @@ db.once('open',function () {
 
 
 ////////////////////server////////////////////////////
-app.listen(3000, function () {
+app.listen(port, function () {
   console.log(' app listening on port 3000!');//
 })
