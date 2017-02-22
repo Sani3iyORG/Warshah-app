@@ -1,14 +1,12 @@
-<!-- <div class="container" ng-init='' ng-show=''>
- -->
-<div class='container'>
+<div class="container" ng-init='intilize()'>
+
 	<div ng-show='!flag' align="middle">
-		<strong class=''> no thing to show, press   <md-button md-no-ink class="md-primary" ng-click="openAddCase()">here </md-button>  to add new case?!
-		</strong>
+		<strong class=''> there isn't any messages to show.</strong>
 	</div>
 
 
 
-	<div ng-show='!flag' align="middle">
+	<div ng-show='flag' align="middle">
 
 		<div>
 			<div class="form-group" ng-repeat='user in users'>
