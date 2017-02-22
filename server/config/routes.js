@@ -19,6 +19,8 @@ module.exports = function (app, express) {
 		app.get('/api/getProfile',TradeWorkerController.getProfile);
 		app.post('/api/updateProfile',TradeWorkerController.updateProfile);
 		app.get('/api/getmsg',TradeWorkerController.getmsg);
+		app.post('/api/delmsg',TradeWorkerController.delmsg);
+		
 	}
 
 

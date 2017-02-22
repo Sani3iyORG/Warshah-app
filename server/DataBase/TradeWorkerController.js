@@ -35,20 +35,22 @@ module.exports = {
 			})
 	},
 
-	signin: function (req, res, next) {
-		TradeWorker.find({email: req.body.email})
-		          .then(function (user) {
-			          if (!user) {
-				        res.status(500).json({error:'TradeWorker already exist!'});
-			        }else{
-				     if (user[0].password === req.body.password) {
-					    var token = jwt.encode(user, 'secret');
-		                res.setHeader('x-access-token',token);
-		                res.json({token: token, userId : user._id});
-				    }else{
-					   res.json(user);
-				  }
-			  }
+	signin: function (req, res) {
+		TradeWorker.findOne({workeremail: req.body.workeremail})
+		           .exec(function (err,user) {
+			          if(err){
+				         res.status(500).send('err');
+				        }else{
+				        	console.log(user)
+				           if (user.password === req.body.password) {
+					           var token = jwt.encode(user, 'secret');
+		                        res.setHeader('x-access-token',token);
+		                        res.json({token: token, userId : user._id});
+				             }else{
+					           res.status(500).json({error:'The password not match!'});
+				                }
+				         }
+				 
 		  })
 	},
 
@@ -63,17 +65,16 @@ module.exports = {
 		});
 	},
 	getProfile : function (req, res) {
-		TradeWorker.findOne({_id:req.user._id})
-		          .exec(function (err, worker) {
-			        if(err){
-				       res.status(500).send('err');
-			        }else{
-				      res.status(200).send(worker);
-			        }
-		     });
+		TradeWorker.findById(req.user._id,function(err,worker){
+                           if(err){
+				            res.status(500).send('err');
+			               }else{
+				            res.status(200).send(worker);
+			            }  
+		        });
 	},
 	updateProfile:function(req,res){
-        TradeWorker.findOne({_id: req.user._id},function (error, worker) {
+        TradeWorker.findById(req.user._id,function (error, worker) {
  				console.log(req.body)
 	 			if(!worker){
 	 				console.log("xxxxx")
@@ -109,15 +110,30 @@ module.exports = {
       });
 	},
 	getmsg:function(req,res){
-		TradeWorker.findOne({_id : req.user._id})
- 			      .exec(function (error, worker) {
-                   if(!worker){
+		TradeWorker.findById(req.user._id,function(err,worker){
+                   if(err){
              	     res.status(500).send('err');
                     }else{
+                    	console.log(worker)
                      res.json(worker.masseges)
                 	}
-                })
-	        }
 
+		})         
+	},
+
+	delmsg:function(req,res){
+		TradeWorker.findOne({workeremail : req.body.workeremail},function(err,worker){
+                   if(err){
+                   	   res.status(500).send('err');
+                   }else{
+                   	  for(var i=0;i<worker.masseges.length;i++){
+                           if(worker.masseges[i].userEmail===req.body.userEmail){
+                           	  worker.masseges.splice(i,1)
+                           }
+                   	  }
+                   	  res.json(worker.masseges)
+                   	     }  
+                });
+	}
 
 }
