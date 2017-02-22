@@ -10,6 +10,7 @@ require('./config/routes.js') (app,express); //
 
 /////////////////////database//////////////////////////
 var mongoURI = process.env.MONGODB_URI ||'mongodb://localhost/WarshahDB';
+  mongoose.Promise = global.Promise;
 mongoose.connect(mongoURI);
 db = mongoose.connection;
 db.once('open',function () {

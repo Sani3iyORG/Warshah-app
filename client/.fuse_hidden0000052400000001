@@ -2,15 +2,17 @@
  	'myapp.Home',
  	'myapp.User',
 	'myapp.Tradeworker',
-	'myapp.Profile',
-	'myapp.Messages',
 	'myapp.services',
 	'ngRoute'
 	])
 
-.config(function($routeProvider, $locationProvider, $httpProvider){
+.config(function($routeProvider, $locationProvider){
 	$locationProvider.hashPrefix('');
 	$routeProvider
+	// .when('/customerSignUp',{
+	// 	templateUrl:'app/user/signup.html',                   
+	// 	controller:'UserController'                  
+	// })
 	.when('/tradeworkerSignup',{
 		templateUrl:'app/tradeworker/tradeworker.html',
 		controller:'TradeworkerContr'                 
@@ -24,39 +26,11 @@
 		templateUrl:'app/home/welcome.html',
 		controller: 'HomeCtrl'              
 	})
-	.when('/messages',{
-		templateUrl: 'app/messages/messages.html',
-		controller: 'MessagesCtrl'
-	})
-	.when('/profile',{
-		templateUrl: 'app/profile/profile.html',
-		controller: 'ProfileCtrl'
-	})
 	.otherwise({
 		redirectTo:'/welcome'
 	})
 	
-$httpProvider.interceptors.push('AttachTokens');
-
-
-})
-
-.factory('AttachTokens', function ($window) {
-  var attach = {
-    request: function (object) {
-      var jwt = $window.localStorage.getItem('tradeworker');
-      if (jwt) {
-        object.headers['x-access-token'] = jwt;
-      }
-      object.headers['Allow-Control-Allow-Origin'] = '*';
-      return object;
-    }
-  };
-  return attach;
-})
-
-
-.factory('Auth', function ($http, $location, $window, $rootScope) {
+}).factory('Auth', function ($http, $location, $window) {
 
   var auth = {};
   auth.saveToken = function (token){
@@ -80,7 +54,6 @@ $httpProvider.interceptors.push('AttachTokens');
   };
 
   auth.logOut = function(){
-  	$rootScope.isLogged = false;
     $window.localStorage.removeItem('tradeworker');
   };
 
@@ -100,26 +73,10 @@ $httpProvider.interceptors.push('AttachTokens');
 
   return auth;  
 })
-.controller('myappCtrl',function ($scope, $rootScope, $http, $location, User, Auth){
-	$scope.logOut = function(){
-		Auth.logOut();
-	}
-})
 .run(function ($rootScope, $location, Auth) {
-	$rootScope.isLogged = false;
-	var goTo;
   $rootScope.$on('$routeChangeStart', function (evt, next, current) {
-  	//console.log(Auth.isAuth());
-    if (next.$$route && ( next.$$route.originalPath === "/profile" || next.$$route.originalPath === '/messages' ) && !Auth.isAuth()) {
-    	//console.log('hellooooooooooooooo');
-      $location.path('signin');
-    } else {
-    	if(next.$$route.originalPath){
-    		$location.path(next.$$route.originalPath);
-    	}else{
-    		$location.path('/welcome');
-    	}
-    	
+    if (next.$$route && next.$$route.authenticate && !Auth.isAuth()) {
+      $location.path('/signin');
     }
   });
 });
