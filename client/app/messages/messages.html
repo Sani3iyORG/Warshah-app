@@ -1,3 +1,43 @@
-<div class="container">
-<span>THIS IS MESSAGES TEMPLETE</span>
+<!-- <div class="container" ng-init='' ng-show=''>
+ -->
+<div class='container'>
+	<div ng-show='!flag' align="middle">
+		<strong class=''> no thing to show, press   <md-button md-no-ink class="md-primary" ng-click="openAddCase()">here </md-button>  to add new case?!
+		</strong>
+	</div>
+
+
+
+	<div ng-show='!flag' align="middle">
+
+		<div>
+			<div class="form-group" ng-repeat='user in users'>
+				<div class="col-sm-10" style="margin-top:30px">
+					<label class="control-label col-sm-2" >user:</label>
+					<p class="form-control-static">{{user.user}}</p>
+				</div>
+					<div class="col-sm-10">
+						<label class="control-label col-sm-2" style="float:left;">user comment:</label>
+						<p class="form-control-static" >{{user.msg}}</p>
+					</div>
+					<div class="col-sm-10">
+						<label class="control-label col-sm-2" >user email:</label>
+						<p class="form-control-static" >{{user.userEmail}}</p>
+					</div>
+					<div class="col-sm-2">
+						<p class="form-control-static" ng-click='responseToUser(user.email)'>
+							<md-button class="md-warn">Delete</md-button></p>
+					</div>
+					<div class="col-sm-2">
+						<p class="form-control-static" ng-click='responseToUser(user.email)'>
+							<md-button class="md-warn">send e-mail</md-button></p>
+					</div>    
+			</div>	
+		</div>
+
+		<!-- <div class="col-xs-12 col-sm-4 col-lg-12 text-center"> 
+					<button ng-click="openAddCase()" class="btn btn-warning pull-right">add new case</button>
+		</div> -->
+	</div>
+
 </div>

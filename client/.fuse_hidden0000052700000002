@@ -1,0 +1,82 @@
+<html>
+<head>
+  <title>Warshah</title>
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/login.css" />
+
+  <!-- script link -->
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script> -->
+  <script src="/bower_components/jquery/dist/jquery.js"></script>
+  <script src="/bower_components/angular/angular.js"></script>
+  <script src="/bower_components/angular-route/angular-route.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="/app/services/services.js"></script>
+  <script src="/app/user/user.js"></script>
+  <script src="/app/tradeworker/Tradeworker.js"></script>
+  <script src="/app/home/welcome.js"></script>
+  <script src="/app.js"></script>
+</head>
+
+<body ng-app='myapp'>
+  <!-- logo -->
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <img alt="Brand" src="image/Logo.gif" class="img-responsive">
+    </a>
+  </div>
+</div>
+
+<!-- menu bar -->
+<nav class="navbar navbar-default">
+
+ <div class="navbar-header">
+
+  <a class="navbar-brand" href="#/welcome">Home Page</a>
+</div>
+<!-- Collect the nav links, forms, and other content for toggling -->
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+  <ul class="nav navbar-nav">
+   <!--  <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li> -->
+   <li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Services <span class="caret"></span></a>
+    <ul class="dropdown-menu">
+      <li><a href="#">Smith</a></li>
+      <li><a href="#">Plumber</a></li>
+      <li><a href="#">Painter</a></li>
+      <li><a href="#">Carpenter</a></li>
+      <li><a href="#">Electricity technician</a></li>
+      
+    </ul>
+  </li>
+  <li><a href="#footer">contact us</a></li>
+</ul>
+<form class="navbar-form navbar-left">
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="Search" 
+    ng-model='searchInput'>
+  </div>
+</form>
+<ul class="nav navbar-nav navbar-right">
+  <li><a href="#/tradeworkerSignup">Signup</a></li>
+  <li><a href="#/signin">Signin</a></li>
+</ul>
+</div>
+</nav>
+
+<!-- the ng-view directive is where our templates will be loaded into when naviagted to -->
+<div ng-view></div>
+
+<!-- footer -->
+<div class="footer">
+  <a href="https://www.facebook.com/profile.php?id=100015323349284" target="_blank">
+    <img src="image/facebook.png" width="40px" height="40px" /></a>
+    <a href="https://www.facebook.com/profile.php?id=100015323349284" target="_blank">
+      <img src="image/twitter.png" width="40px" height="40px" /></a>
+      <a href="index.html"><img src="image/whatsapp.png" width="40px" height="40px" /></a>
+      <h5 id="footer">copy  right &copy Warsha Team</h5>
+    </div>
+
+  </body>
+  </html>
