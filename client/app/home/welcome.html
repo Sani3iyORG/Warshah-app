@@ -6,7 +6,8 @@
     <li data-target="#myCarousel" data-slide-to="1"></li>
     <li data-target="#myCarousel" data-slide-to="2"></li>
   </ol>
-  <div class="carousel-inner" role="listbox">
+ <!--  i have just comment slide cause it make some conflict when workig with ui-bootstrap -->
+  <!-- <div class="carousel-inner" role="listbox">
     <div class="item active">
       <img class="first-slide" src="image/cover1.jpg" alt="First slide">
     </div>
@@ -37,7 +38,7 @@
     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
-</div>
+</div> -->
 
 <div class="container">
 <div class="col-md-12" id="main"  ng-controller="HomeCtrl">
@@ -49,6 +50,7 @@
         <h5><span class="span">Phone: </span>{{worker.phone}}</h5>
         <p><span class="span">Service: </span> {{worker.service}} <span class="span">Place: </span> {{worker.place}}</p>
         <p><a href="#" class="btn btn-primary" role="button">Details</a> </p>
+        <button class="btn btn-warning" ng-click="sendMessage(worker._id)">Custom Dialog</button>      
       </div>
     </div>
   </div> 
