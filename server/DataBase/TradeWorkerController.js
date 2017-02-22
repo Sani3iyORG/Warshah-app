@@ -3,19 +3,16 @@ var jwt = require('jwt-simple');
 var utils = require('../config/utils.js');
 
 module.exports = {
-	signup: function (req, res) {
-		console.log(req.body)
-		TradeWorker.findOne({username : req.body.username})
+signup: function (req, res) {
+		TradeWorker.findOne({workeremail : req.body.email})
  			.exec(function (error, user) {
- 				//console.log(user)
 	 			if(user){
-	 				console.log(user)
 	 				res.status(500).json({error:'TradeWorker already exist!'});
 	 			}else{
 					var newTradeWorker = new TradeWorker ({
 						username : req.body.username,
 						password : req.body.password,
-			        	workeremail:req.body.workeremail,
+			        	workeremail:req.body.email,
 			        	place : req.body.place,
 			        	service : req.body.service,
 			        	phone : req.body.phone,
