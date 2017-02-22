@@ -53,6 +53,14 @@ angular.module('myapp.services', [])
     })
   }
 
+  var fetch = function() {
+    return $http({
+      method : 'GET',
+      url : '/api/getProfile'
+    }).then(function (resp) {
+      return resp.data
+    })
+  }
 
   var getAll = function () {
     return $http({
@@ -65,6 +73,8 @@ angular.module('myapp.services', [])
 
   return {
     insert : insert,
-    getAll : getAll
+    getAll : getAll,
+    update : update,
+    fetch : fetch
   }
 })

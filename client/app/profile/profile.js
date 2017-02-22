@@ -1,16 +1,21 @@
-angular.module('myapp.Profile',[])
 
- .controller('ProfileCtrl',function ($scope, $rootScope, $http, $location, Tradeworker, Auth){
-  
+angular.module('myapp.Profile',['myapp.Update',/*'ui.bootstrap'*/])
+
+.controller('ProfileCtrl',function ($scope, $http, $rootScope, Tradeworker, /*$uibModal*/){
   $rootScope.isLogged = true;
-    $scope.updateHandWorker = function(){
-    console.log($scope.tradeworker);
-    Tradeworker.update($scope.tradeworker)
-    .then(function (data) {
-      alert(data.message);
-    })
-    .catch(function (error) {
-      alert(error.data.error);
-    });
-  }
+  Tradeworker.fetch()
+  .then(function(data){
+    $scope.tradeworker = {};
+    $scope.tradeworker = data;
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+ //  $scope.openUpdate = function () {
+ //   $uibModal.open({
+ //     templateUrl: 'profile/updateProfile/updateProfile.html',
+ //     controller: 'updateProfileCtrl',
+ //   });
+ // }
+
 })

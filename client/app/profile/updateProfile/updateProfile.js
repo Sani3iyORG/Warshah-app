@@ -1,6 +1,6 @@
-angular.module('myapp.Profile',[])
+angular.module('myapp.Update',[])
 
- .controller('ProfileCtrl',function ($scope, $rootScope, $http, $location, Tradeworker, Auth){
+ .controller('updateProfileCtrl',function ($scope, $rootScope, $http, $location, Tradeworker, Auth){
   
   $rootScope.isLogged = true;
     $scope.updateHandWorker = function(){
