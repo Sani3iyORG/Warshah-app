@@ -1,0 +1,73 @@
+<div class="container">
+  <form class="form-update-profile" ng-submit='updateHandWorker()'>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <div class="panel panel-default">
+            <div class="panel panel-primary">
+              <h3 class="text-center">
+                Update my information</h3>
+
+                <div class="panel-body">   
+
+                  <div class="form-group">
+                    <div class="input-group">
+                      <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span>
+                    </span>
+                    <input type="text" class="form-control" placeholder="User Name" ng-model='tradeworker.username'/>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="input-group">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                    <input type="password" class="form-control" placeholder="New Password" ng-model='tradeworker.password' />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="input-group">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></span>
+                    <input type="text" class="form-control" placeholder="Phone Number" ng-model='tradeworker.phone'/>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="input-group">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-map-marker"></span></span>
+                    <input type="text" class="form-control" placeholder="Place" ng-model='tradeworker.place' />
+                  </div>
+                </div>
+                <div class="form-group"> 
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                    <select name="service" class="form-control selectpicker" ng-model='tradeworker.service'>
+                      <option value="">Change your service</option>
+                      <option>Carpenter</option>
+                      <option>Smith</option>
+                      <option >Electricity technician</option>
+                      <option >Plumber</option>
+                      <option >Painter</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group"> 
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                    <select name="service" class="form-control selectpicker" ng-model='tradeworker.experiance'>
+                      <option value="">Change your experience</option>
+                      <option>Professional</option>
+                      <option>Intermediate</option>
+                      <option >Amateur</option>
+                    </select>
+                  </div>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">
+                  Save
+                </button> 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
