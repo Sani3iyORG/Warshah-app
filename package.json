@@ -10,6 +10,7 @@
   "author": "moamar & duaa & marwa & kamal ",
   "license": "ISC",
   "dependencies": {
+    "angular-ui-bootstrap": "^2.5.0",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "*",
     "express": "*",

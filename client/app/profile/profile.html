@@ -1,3 +1,28 @@
-<div class="container">
-<span>THIS IS PROFILE TEMPLETE</span>
+<br>
+<div class="container-fluid well col-md-7 col-md-offset-2" >
+  <div class="row">
+        <div class="col-xs-4" >
+        <img src="https://secure.gravatar.com/avatar/de9b11d0f9c0569ba917393ed5e5b3ab?s=140&r=g&d=mm" class="img-circle">
+        </div>
+        <div class="col-xs-6">
+            <h3>{{tradeworker.username}}</h3>
+            <h6>Email: {{tradeworker.email}}</h6>
+            <h6>Phone Number: {{tradeworker.phone}}</h6>
+            <h6>Location: {{tradeworker.place}}</h6>
+            <h6>Expertise: {{tradeworker.experiance}}</h6>
+        </div>
+        <div class="col-xs-2">
+            <div class="btn-group">
+                <a class="btn dropdown-toggle btn-info" data-toggle="dropdown">
+                    Action 
+                    <span class="icon-cog icon-white"></span><span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a ng-click="openUpdate()"><span class="icon-wrench"></span> Update</a></li>
+                    <li><a ng-click="deActivate()"><span class="icon-trash"></span> DeActivate</a></li>
+                </ul>
+            </div>
+        </div>
 </div>
+</div>
+<br>

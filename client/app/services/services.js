@@ -43,6 +43,25 @@ angular.module('myapp.services', [])
     })
   }
 
+  var update = function (Tradeworker) {
+    return $http({
+      method : 'POST',
+      url : '/api/updateProfile',
+      data : Tradeworker
+    }).then(function (resp) {
+      return resp.data
+    })
+  }
+
+  var fetch = function() {
+    return $http({
+      method : 'GET',
+      url : '/api/getProfile'
+    }).then(function (resp) {
+      return resp.data
+    })
+  }
+
   var getAll = function () {
     return $http({
       method : 'GET',
@@ -54,6 +73,8 @@ angular.module('myapp.services', [])
 
   return {
     insert : insert,
-    getAll : getAll
+    getAll : getAll,
+    update : update,
+    fetch : fetch
   }
 })
