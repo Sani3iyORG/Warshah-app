@@ -18,7 +18,7 @@
 			$scope.ifuser=false;
 			$scope.email="";
 			$scope.password="";
-			alret(error.data.message);
+			alert(error.data.message);
 		})
 	}
 

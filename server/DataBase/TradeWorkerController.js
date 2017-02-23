@@ -7,7 +7,7 @@ module.exports = {
     TradeWorker.findOne({workeremail : req.body.email})
     .exec(function (error, user) {
       if(user){
-        res.status(500).json({error:'TradeWorker already exist!'});
+        res.status(500).send({error:'TradeWorker is already exist!'});
       }else{
         var newTradeWorker = new TradeWorker ({
           username : req.body.username,
