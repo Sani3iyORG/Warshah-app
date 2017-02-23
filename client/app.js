@@ -3,6 +3,7 @@
  	'myapp.User',
 	'myapp.Tradeworker',
 	'myapp.Profile',
+  'myapp.Update',
 	'myapp.Messages',
 	'myapp.services',
   'myapp.sendMessage',

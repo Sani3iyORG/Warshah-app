@@ -76,7 +76,7 @@ signup: function (req, res) {
 	 			if(error){
 	 				console.log("xxxxx")
 	 				res.status(500).json({error:'error in DB!'});
-	 			}else{   
+	 			}else{
 	 		    TradeWorker.update(worker,req.body,function(err,newworker){
 	 			   if(err){
 				      res.status(500).send('err');
