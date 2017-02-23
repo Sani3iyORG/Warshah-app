@@ -120,7 +120,6 @@ module.exports = {
      }
    })         
   },
-
   delmsg:function(req,res){
     TradeWorker.findById(req.user._id,function(err,worker){
      if(err){
@@ -165,10 +164,7 @@ module.exports = {
          res.json({Message: info.response});
        };
      });
-     }
-   }
-
-
+  },
    deactive:function(req,res){
     TradeWorker.findById(req.user._id,function(err,worker){
       if(err){
@@ -182,7 +178,7 @@ module.exports = {
             res.json(newworker);
           }
         })
-        
+
       }
     })
 
