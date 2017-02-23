@@ -160,8 +160,8 @@ signup: function (req, res) {
                    res.json({Message: info.response});
               };
 	    });
-	}
-}
+	
+},
 
 
 	deactive:function(req,res){
