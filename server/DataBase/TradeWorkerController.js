@@ -16,8 +16,8 @@ signup: function (req, res) {
 			        	place : req.body.place,
 			        	service : req.body.service,
 			        	phone : req.body.phone,
-			        	experiance : req.body.experiance,
-			        	picture: req.body.picture
+			        	active :true,
+			        	experiance : req.body.experiance
 					});
 					newTradeWorker.save(function(err, newTradeWorker){
 			    		if(err){
@@ -71,16 +71,17 @@ signup: function (req, res) {
 		        });
 	},
 	updateProfile:function(req,res){
-        TradeWorker.findById(req.user._id,function (error, worker) {
+        TradeWorker.findOne({username:req.body.username},function (error, worker) {
  				console.log(req.body)
-	 			if(!worker){
+	 			if(error){
 	 				console.log("xxxxx")
-	 				res.status(500).json({error:'TradeWorker already exist!'});
+	 				res.status(500).json({error:'error in DB!'});
 	 			}else{   
 	 		    TradeWorker.update(worker,req.body,function(err,newworker){
 	 			   if(err){
 				      res.status(500).send('err');
 			        }else{
+			        	console.log(newworker)
 				     res.status(200).send(newworker);
 			       }
                })
@@ -128,6 +129,23 @@ signup: function (req, res) {
                    	  res.json(worker.masseges)
                    	     }  
                 });
+	},
+	deactive:function(req,res){
+		TradeWorker.findById(req.user._id,function(err,worker){
+			if(err){
+                res.status(500).send('err');
+			}else{
+				worker.active=false;
+				worker.save(function(err,newworker){
+					if(err){
+					res.status(500).send('err');	
+					}else{
+				    res.status(200).send(newworker);
+					}
+				})
+				
+		    }
+		})
 	}
 
 }
