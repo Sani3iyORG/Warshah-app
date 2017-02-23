@@ -179,10 +179,13 @@ module.exports = {
             res.json(newworker);
           }
         })
-
-      }
+          }
     })
 
-  }
+}
+
+    
+
+  
 }
 

@@ -1,0 +1,41 @@
+angular.module('myapp.Messages',[])
+
+ .controller('MessagesCtrl',function ($scope, $rootScope, $http, $location, Tradeworker, Auth, $dialogs){
+  
+  $rootScope.isLogged = true;
+  $scope.flag= false;
+  $scope.users=[];
+
+  $scope.intilize = function(){
+     $http({
+      method: 'GET',
+      url: '/api/getmsg'
+    }).then(function(mesg){
+      if(mesg.length ===0){
+        $scope.flag=false;
+      } else{
+        $scope.flag= true;
+        $scope.users = mesg.data;
+      console.log($scope.users)
+      }
+    }).catch(function(error){
+        alert(error);
+    })   
+  }
+
+  
+
+  // $scope.responseToUser =function(username, useremail){
+  //   console.log(Auth.currentUser())
+  //   $rootScope.userNameM = Auth.currentUser();
+  //   $rootScope.useremailM = useremail;
+  //   console.log( $rootScope.userNameM,  $rootScope.useremailM)
+  //    //$rootScope.email=workeremail;
+  //    dlg = $dialogs.create('./app/messages/sendResponseEmail/sendResponseEmail.html','sendMessageEmailCtrl',{},{key: false,back: 'static'});
+  // }
+
+
+  $scope.deleteUser function(user){
+    console.log(Auth.currentUser())
+  }
+})

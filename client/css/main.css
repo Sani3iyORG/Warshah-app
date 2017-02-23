@@ -11,7 +11,17 @@ html, body {
  border-right: 2.5px dotted #e7e7e6;
  border-bottom: 2.5px dotted #e7e7e6;
 
-  padding: 40px   ;
+  padding: 40px;
+}
+#del{
+  color: red;
+  float: right;
+  
+}
+#send{
+  color:blue;
+  position: absolute;
+    float: right;
 }
 
 /*.thumbnail {
