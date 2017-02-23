@@ -9,30 +9,29 @@
 	<div ng-show='flag' align="middle">
 
 		<div>
-			<div class="form-group" ng-repeat='user in users'>
+		<form class="form-horizontal" >
+			<div class="form-group" ng-repeat='user in users' style="background-color:#F8F8FF">
 				<div class="col-sm-10" style="margin-top:30px">
 					<label class="control-label col-sm-2" >user:</label>
-					<p class="form-control-static">{{user.user}}</p>
+					<p class="form-control-static" style="background-color:white">{{user.user}}</p>
 				</div>
 					<div class="col-sm-10">
-						<label class="control-label col-sm-2" style="float:left;">user comment:</label>
-						<p class="form-control-static" >{{user.msg}}</p>
+						<label class="control-label col-sm-2" style="float:left;">comment:</label>
+						<p class="form-control-static" style="background-color:white"> >{{user.msg}}</p>
 					</div>
 					<div class="col-sm-10">
-						<label class="control-label col-sm-2" >user email:</label>
-						<p class="form-control-static" >{{user.userEmail}}</p>
+						<label class="control-label col-sm-2" >email:</label>
+						<p class="form-control-static" style="background-color:white">{{user.userEmail}}</p>
 					</div>
-					<div class="col-sm-2">
-						<p class="form-control-static" ng-click='responseToUser(user.email)'>
-							<md-button class="md-warn">Delete</md-button></p>
-					</div>
-					<div class="col-sm-2">
-						<p class="form-control-static" ng-click='responseToUser(user.email)'>
-							<md-button class="md-warn">send e-mail</md-button></p>
+					<div class="form-group" >
+					<div class="btn-group-vertical" style="top:60px">
+                     <button type="button" style="background-color:orange;" class="btn btn-primary" ng-click='deleteMessage(user.email)'>Delete</button>
+                     <button type="button" class="btn btn-primary" ng-click='responseToUser(user.email,user.user)'>send e-mail</button>
+                    </div>
 					</div>    
 			</div>	
+		</form>
 		</div>
-
 		<!-- <div class="col-xs-12 col-sm-4 col-lg-12 text-center"> 
 					<button ng-click="openAddCase()" class="btn btn-warning pull-right">add new case</button>
 		</div> -->
