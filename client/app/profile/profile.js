@@ -1,7 +1,7 @@
 
-angular.module('myapp.Profile',['myapp.Update',/*'ui.bootstrap'*/])
+angular.module('myapp.Profile',[])
 
-.controller('ProfileCtrl',function ($scope, $http, $rootScope, Tradeworker, /*$uibModal*/){
+.controller('ProfileCtrl',function ($scope, $dialogs, $http, $rootScope, Tradeworker){
   $rootScope.isLogged = true;
   Tradeworker.fetch()
   .then(function(data){
@@ -11,8 +11,13 @@ angular.module('myapp.Profile',['myapp.Update',/*'ui.bootstrap'*/])
   .catch(function (error) {
     console.log(error);
   });
+
+  $scope.openUpdate = function(){
+    dlg = $dialogs.create('./app/profile/updateProfile/updateProfile.html','updateProfileCtrl',{},{key: false, backdrop: true});
+  }
+
  //  $scope.openUpdate = function () {
- //   $uibModal.open({
+ //   $Modal.open({
  //     templateUrl: 'profile/updateProfile/updateProfile.html',
  //     controller: 'updateProfileCtrl',
  //   });

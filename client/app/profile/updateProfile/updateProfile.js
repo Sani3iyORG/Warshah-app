@@ -1,9 +1,10 @@
-angular.module('myapp.Update',[])
+angular.module('myapp.Update',['ui.bootstrap','dialogs'])
 
- .controller('updateProfileCtrl',function ($scope, $rootScope, $http, $location, Tradeworker, Auth){
-  
+.controller('updateProfileCtrl',function ($timeout, $dialogs, $scope, $rootScope, $http, $location, $modalInstance, Tradeworker){
+
   $rootScope.isLogged = true;
-    $scope.updateHandWorker = function(){
+  $scope.tradeworker = {};
+  $scope.updateHandWorker = function(){
     console.log($scope.tradeworker);
     Tradeworker.update($scope.tradeworker)
     .then(function (data) {
@@ -12,5 +13,6 @@ angular.module('myapp.Update',[])
     .catch(function (error) {
       alert(error.data.error);
     });
+    $modalInstance.close();
   }
 })

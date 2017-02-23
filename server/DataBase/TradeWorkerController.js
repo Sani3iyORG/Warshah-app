@@ -74,13 +74,14 @@ signup: function (req, res) {
         TradeWorker.findById(req.user._id,function (error, worker) {
  				console.log(req.body)
 	 			if(!worker){
-	 				console.log("xxxxx")
+	 				console.log("xxxxx");
 	 				res.status(500).json({error:'TradeWorker already exist!'});
-	 			}else{   
+	 			}else{
 	 		    TradeWorker.update(worker,req.body,function(err,newworker){
 	 			   if(err){
 				      res.status(500).send('err');
 			        }else{
+			        	console.log(newworker)
 				     res.status(200).send(newworker);
 			       }
                })

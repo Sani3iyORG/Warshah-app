@@ -61,7 +61,7 @@
                     </select>
                   </div>
                 </div>
-                <button class="btn btn-lg btn-primary btn-block" type="submit">
+                <button class="btn btn-lg btn-primary btn-block" type="submit" ng-disabled="!(!!tradeworker.username || !!tradeworker.password  || !!tradeworker.place || !!tradeworker.phone || !!tradeworker.service || !!tradeworker.experience)">
                   Save
                 </button> 
               </div>
