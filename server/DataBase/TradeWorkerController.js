@@ -78,18 +78,17 @@ module.exports = {
   });
   },
   updateProfile:function(req,res){
+    console.log(req.user)
     TradeWorker.findById(req.user._id,function (error, worker) {
-      console.log(req.body)
       if(error){
-        console.log("xxxxx")
-        res.status(500).json({error:'error in DB!'});
+        res.status(500).send({error:error.massage});
       }else{
+        console.log(TradeWorker.isNew,'dfdasgdag')
         TradeWorker.update(worker,req.body,function(err,newworker){
          if(err){
-          res.status(500).send('err');
+          res.status(500).send({error: err});
         }else{
-          console.log(newworker)
-          res.status(200).send(newworker);
+          res.status(200).send({message: 'your profile has been updated successfully!'});
         }
       })
       }
