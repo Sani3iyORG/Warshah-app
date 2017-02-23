@@ -5,8 +5,8 @@ angular.module('myapp.Messages',[])
   $rootScope.isLogged = true;
   $scope.flag= false;
   $scope.users=[];
-      $rootScope.emailu=undefined;
-    $rootScope.usernameu= undefined;
+  $rootScope.emailu=undefined;
+  $rootScope.usernameu= undefined;
 
 
   $scope.intilize = function(){
@@ -19,7 +19,6 @@ angular.module('myapp.Messages',[])
       } else{
         $scope.flag= true;
         $scope.users = mesg.data;
-      console.log($scope.users)
       }
     }).catch(function(error){
         alert(error);
