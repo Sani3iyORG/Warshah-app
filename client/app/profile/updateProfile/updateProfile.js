@@ -4,6 +4,9 @@ angular.module('myapp.Update',['ui.bootstrap','dialogs'])
 
   $rootScope.isLogged = true;
   $scope.tradeworker = {};
+  $scope.cancel = function(){
+    $modalInstance.dismiss('canceled');  
+  };
   $scope.updateHandWorker = function(){
     console.log($scope.tradeworker);
     Tradeworker.update($scope.tradeworker)

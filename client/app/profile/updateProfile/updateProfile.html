@@ -61,9 +61,10 @@
                     </select>
                   </div>
                 </div>
-                <button class="btn btn-lg btn-primary btn-block" type="submit" ng-disabled="!(!!tradeworker.username || !!tradeworker.password  || !!tradeworker.place || !!tradeworker.phone || !!tradeworker.service || !!tradeworker.experience)">
+                <button class="btn btn-lg btn-primary " type="submit" ng-disabled="!(!!tradeworker.username || !!tradeworker.password  || !!tradeworker.place || !!tradeworker.phone || !!tradeworker.service || !!tradeworker.experience)">
                   Save
-                </button> 
+                </button>
+                <button class="btn btn-lg btn-warning" type="button" ng-click="cancel()">Cancel</button>
               </div>
             </div>
           </div>
