@@ -53,7 +53,7 @@
                 <div class="form-group"> 
                   <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-                    <select name="service" class="form-control selectpicker" ng-model='tradeworker.experiance'>
+                    <select name="experiance" class="form-control selectpicker" ng-model='tradeworker.experiance'>
                       <option value="">Change your experience</option>
                       <option>Professional</option>
                       <option>Intermediate</option>
@@ -61,9 +61,10 @@
                     </select>
                   </div>
                 </div>
-                <button class="btn btn-lg btn-primary btn-block" type="submit" ng-disabled="!(!!tradeworker.username || !!tradeworker.password  || !!tradeworker.place || !!tradeworker.phone || !!tradeworker.service || !!tradeworker.experience)">
+                <button class="btn btn-lg btn-primary " type="submit" ng-disabled="!(!!tradeworker.username || !!tradeworker.password  || !!tradeworker.place || !!tradeworker.phone || !!tradeworker.service || !!tradeworker.experience)">
                   Save
-                </button> 
+                </button>
+                <button class="btn btn-lg btn-warning" type="button" ng-click="cancel()">Cancel</button>
               </div>
             </div>
           </div>

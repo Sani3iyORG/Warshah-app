@@ -33,6 +33,8 @@ angular.module('myapp.services', [])
 
 .factory('Tradeworker',function ($http, $location) {
 
+  var worker = {};
+
   var insert = function (Tradeworker) {
     return $http({
       method : 'POST',
@@ -72,6 +74,7 @@ angular.module('myapp.services', [])
   }
 
   return {
+    worker: worker,
     insert : insert,
     getAll : getAll,
     update : update,

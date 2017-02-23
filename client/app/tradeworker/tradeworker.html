@@ -1,6 +1,6 @@
  <div class="container">
 
-  <form class="well form-horizontal" ng-submit='addhandworker()' id="contact_form">
+  <form class="well form-horizontal" name= "signupFrm" ng-submit='addhandworker()' id="contact_form">
     <fieldset>
 
       <!-- Form Name -->
@@ -13,7 +13,7 @@
         <div class="col-md-4 inputGroupContainer">
           <div class="input-group">
             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-            <input  name="username" placeholder="your unique username.." class="form-control"  type="text" ng-model='tradeworker.username'>
+            <input  name="username" placeholder="your unique username.." class="form-control"  type="text" ng-model='tradeworker.username' required>
           </div>
         </div>
       </div>
@@ -25,7 +25,7 @@
         <div class="col-md-4 inputGroupContainer">
           <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-            <input  name="username" placeholder="enter your password here.." class="form-control"  type="password" ng-model='tradeworker.password'>
+            <input  name="username" placeholder="enter your password here.." class="form-control"  type="password" ng-model='tradeworker.password' required>
           </div>
         </div>
       </div>
@@ -37,7 +37,7 @@
         <div class="col-md-4 inputGroupContainer">
           <div class="input-group">
             <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
-            <input  name="place" placeholder="enter your location.." class="form-control"  type="text" ng-model='tradeworker.place'>
+            <input  name="place" placeholder="enter your location.." class="form-control"  type="text" ng-model='tradeworker.place' required>
           </div>
         </div>
       </div>
@@ -61,13 +61,17 @@
         </div>
       </div>
 
-      <!-- Text input-->
-      <div class="form-group">
-        <label class="col-md-4 control-label">Experiance</label>  
-        <div class="col-md-4 inputGroupContainer">
+      <div class="form-group"> 
+        <label class="col-md-4 control-label">Experiance</label>
+        <div class="col-md-4 selectContainer">
           <div class="input-group">
-            <span class="input-group-addon"><i class="glyphicon glyphicon-indent-left"></i></span>
-            <input  name="experiance" placeholder="your level of experiance.." class="form-control"  type="text" ng-model='tradeworker.experiance'>
+            <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+            <select name="experiance" class="form-control selectpicker" ng-model='tradeworker.experiance'>
+              <option value="">Select your experience</option>
+              <option>Professional</option>
+              <option>Intermediate</option>
+              <option >Amateur</option>
+            </select>
           </div>
         </div>
       </div>
@@ -80,7 +84,7 @@
         <div class="col-md-4 inputGroupContainer">
           <div class="input-group">
             <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-            <input name="email" placeholder="E-Mail Address" class="form-control"  type="text" ng-model='tradeworker.email'>
+            <input name="email" placeholder="E-Mail Address" class="form-control"  type="email" ng-model='tradeworker.email' required>
           </div>
         </div>
       </div>
@@ -93,7 +97,7 @@
         <div class="col-md-4 inputGroupContainer">
           <div class="input-group">
             <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-            <input name="contact_no" placeholder="(962)" class="form-control" type="text" ng-model='tradeworker.phone'>
+            <input name="contact_no" placeholder="(962)" class="form-control" type="text" ng-model='tradeworker.phone' required>
           </div>
         </div>
       </div>
@@ -104,7 +108,7 @@
       <div class="form-group">
         <label class="col-md-4 control-label"></label>
         <div class="col-md-4">
-          <button type="submit" class="btn btn-lg btn-primary btn-block" >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSUBMIT <span class="glyphicon glyphicon-send"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+          <button type="submit" ng-disabled = "signupFrm.$invalid" class="btn btn-lg btn-primary btn-block" >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSUBMIT <span class="glyphicon glyphicon-send"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
         </div>
       </div>
 
