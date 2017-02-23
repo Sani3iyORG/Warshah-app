@@ -10,14 +10,13 @@ angular.module('myapp.sendMessageEmail',['ui.bootstrap','dialogs'])
 
   	$scope.user.email = $rootScope.emailu;
     $scope.user.name = $rootScope.usernameu;
-    console.log($scope.user)
   	$http({
   		method: 'POST',
   		url:'api/sendemail',
   		data: $scope.user
 
   	}).then(function(resp){
-  		alert(resp.data)
+  		alert(resp.data.Message)
   	})
   	$modalInstance.dismiss('canceled');  
   };
