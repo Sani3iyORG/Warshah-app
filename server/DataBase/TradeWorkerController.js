@@ -1,7 +1,7 @@
 var TradeWorker = require ('./TradeWorkerModel');
 var jwt = require('jwt-simple');
 var utils = require('../config/utils.js');
-
+var nodemailer = require('nodemailer');
 module.exports = {
 signup: function (req, res) {
 		TradeWorker.findOne({workeremail : req.body.email})
@@ -130,6 +130,40 @@ signup: function (req, res) {
                    	     }  
                 });
 	},
+	sendemail: function(req,res){
+		// the request should look like this 
+		//{ "email":"example@gmail.com",
+        //"name":"ahmed",
+        //"msg":"hello world "
+        //}
+  	    var transporter = nodemailer.createTransport({
+            service: 'Gmail',
+            auth: {
+                   user: 'warsha.services@gmail.com', 
+                   pass: 'AAwarshaAA1' 
+              }
+        });
+		var mailOptions = {
+                   from: 'warsha.services@gmail.com',
+                   to:req.body.email , 
+                   subject: 'From '+ req.body.name , 
+                   text: req.body.msg
+
+        };
+
+		 transporter.sendMail(mailOptions, function(error, info){
+  			  if(error){
+     			   console.log(error);
+      			   res.json({Message: 'error'});
+              }else{
+                   console.log('Message sent: ' + info.response);
+                   res.json({Message: info.response});
+              };
+	    });
+	}
+}
+
+
 	deactive:function(req,res){
 		TradeWorker.findById(req.user._id,function(err,worker){
 			if(err){

@@ -15,6 +15,7 @@ module.exports = function (app, express) {
 		app.post('/api/signin',TradeWorkerController.signin);
 		app.post('/api/addmsg',TradeWorkerController.addmsg);
 		app.get('/api/all',TradeWorkerController.getAllTradeWorker);
+		app.post('/api/sendemail',TradeWorkerController.sendemail);
 		app.use(utils.decode);
 		app.post('/api/updateProfile',TradeWorkerController.updateProfile);
 		app.get('/api/getProfile',TradeWorkerController.getProfile);
