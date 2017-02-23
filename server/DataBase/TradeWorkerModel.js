@@ -23,6 +23,9 @@ var TradeWorkerSchema = new mongoose.Schema({
 		type     : String, 
 		required : true
 	},
+	active:{
+		type :Boolean
+	},
 	phone:{
 		type     : String,
 		required : true 
