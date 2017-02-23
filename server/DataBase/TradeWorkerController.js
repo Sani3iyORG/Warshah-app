@@ -4,9 +4,11 @@ var utils = require('../config/utils.js');
 var nodemailer = require('nodemailer');
 module.exports = {
   signup: function (req, res) {
+    console.log(req.body);
     TradeWorker.findOne({workeremail : req.body.email})
     .exec(function (error, user) {
       if(user){
+        console.log(user);
         res.status(500).send({error:'TradeWorker is already exist!'});
       }else{
         var newTradeWorker = new TradeWorker ({
