@@ -53,7 +53,7 @@ signup: function (req, res) {
 
 
 	getAllTradeWorker : function (req, res) {
-		TradeWorker.find().exec(function (err, allTradWorker) {
+		TradeWorker.find({active:true}).exec(function (err, allTradWorker) {
 			if(err){
 				res.status(500).send('err');
 			}else{
@@ -71,7 +71,7 @@ signup: function (req, res) {
 		        });
 	},
 	updateProfile:function(req,res){
-        TradeWorker.findOne({username:req.body.username},function (error, worker) {
+        TradeWorker.findById(req.user._id,function (error, worker) {
  				console.log(req.body)
 	 			if(error){
 	 				console.log("xxxxx")
@@ -117,7 +117,7 @@ signup: function (req, res) {
 	},
 
 	delmsg:function(req,res){
-		TradeWorker.findOne({workeremail : req.body.workeremail},function(err,worker){
+		TradeWorker.findById(req.user._id,function(err,worker){
                    if(err){
                    	   res.status(500).send('err');
                    }else{
@@ -133,19 +133,20 @@ signup: function (req, res) {
 	deactive:function(req,res){
 		TradeWorker.findById(req.user._id,function(err,worker){
 			if(err){
-                res.status(500).send('err');
+                res.status(500).send('err xxxx');
 			}else{
-				worker.active=false;
-				worker.save(function(err,newworker){
+				worker.update(worker,{active:false},function(err,newworker){
 					if(err){
 					res.status(500).send('err');	
 					}else{
-				    res.status(200).send(newworker);
+						console.log(worker)
+				    res.json(newworker);
 					}
 				})
 				
 		    }
 		})
-	}
+	
+       }
+  }
 
-}
