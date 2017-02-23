@@ -12,13 +12,13 @@
 			Auth.saveToken(data.token);
 			$rootScope.isLogged = true;
 			$location.path('/profile');
-			//$window.location.reload();
 		})
 		.catch(function (error) {
 			console.log(error);
 			$scope.ifuser=false;
 			$scope.email="";
 			$scope.password="";
+			alret(error.data.message);
 		})
 	}
 
