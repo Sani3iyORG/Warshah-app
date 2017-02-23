@@ -7,6 +7,7 @@
 	'myapp.Messages',
 	'myapp.services',
   'myapp.sendMessage',
+  'myapp.sendMessageEmail',
 	'ngRoute'
 	])
 
