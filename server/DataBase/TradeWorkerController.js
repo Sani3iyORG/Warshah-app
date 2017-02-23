@@ -16,8 +16,8 @@ signup: function (req, res) {
 			        	place : req.body.place,
 			        	service : req.body.service,
 			        	phone : req.body.phone,
-			        	experiance : req.body.experiance,
-			        	picture: req.body.picture
+			        	active :true,
+			        	experiance : req.body.experiance
 					});
 					newTradeWorker.save(function(err, newTradeWorker){
 			    		if(err){
@@ -53,7 +53,7 @@ signup: function (req, res) {
 
 
 	getAllTradeWorker : function (req, res) {
-		TradeWorker.find().exec(function (err, allTradWorker) {
+		TradeWorker.find({active:true}).exec(function (err, allTradWorker) {
 			if(err){
 				res.status(500).send('err');
 			}else{
@@ -73,14 +73,15 @@ signup: function (req, res) {
 	updateProfile:function(req,res){
         TradeWorker.findById(req.user._id,function (error, worker) {
  				console.log(req.body)
-	 			if(!worker){
+	 			if(error){
 	 				console.log("xxxxx")
-	 				res.status(500).json({error:'TradeWorker already exist!'});
-	 			}else{   
+	 				res.status(500).json({error:'error in DB!'});
+	 			}else{
 	 		    TradeWorker.update(worker,req.body,function(err,newworker){
 	 			   if(err){
 				      res.status(500).send('err');
 			        }else{
+			        	console.log(newworker)
 				     res.status(200).send(newworker);
 			       }
                })
@@ -116,7 +117,7 @@ signup: function (req, res) {
 	},
 
 	delmsg:function(req,res){
-		TradeWorker.findOne({workeremail : req.body.workeremail},function(err,worker){
+		TradeWorker.findById(req.user._id,function(err,worker){
                    if(err){
                    	   res.status(500).send('err');
                    }else{
@@ -163,4 +164,23 @@ signup: function (req, res) {
 }
 
 
+	deactive:function(req,res){
+		TradeWorker.findById(req.user._id,function(err,worker){
+			if(err){
+                res.status(500).send('err xxxx');
+			}else{
+				worker.update(worker,{active:false},function(err,newworker){
+					if(err){
+					res.status(500).send('err');	
+					}else{
+						console.log(worker)
+				    res.json(newworker);
+					}
+				})
+				
+		    }
+		})
+	
+       }
+  }
 
