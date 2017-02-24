@@ -17,6 +17,7 @@ Icon
 .log
 node_modules/
 db/
+client/bower_components
 client/lib/
 client/dist/
 coverage/
