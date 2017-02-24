@@ -1,5 +1,5 @@
-  <div class="container" >
- <div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <div class="container">
+ <div id="myCarousel" class="carousel slide" >
   <!-- Indicators -->
   <ol class="carousel-indicators">
     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -48,9 +48,13 @@
       <div class="caption">
         <h4>{{worker.username}}</h4>
         <h5><span class="span">Phone: </span>{{worker.phone}}</h5>
-        <p><span class="span">Service: </span> {{worker.service}} <span class="span">Place: </span> {{worker.place}}</p>
+        <p><span class="span">Service: </span> {{worker.service}} </p> 
+        <p ng-show='worker.flag'> <span class="span">Place: </span> {{worker.place}}</p>
+        <p ng-show='worker.flag'> <span class="span">contact email: </span> {{worker.workeremail}}</p>
+        <p ng-show='worker.flag'> <span class="span">experiance: </span> {{worker.experiance}}</p>
+
         <div>
-        <p><a href="#" class="col-sm-4 btn btn-primary" role="button">Details</a> </p>
+        <p><button class="col-sm-4 btn btn-primary" role="button" ng-click='details(worker)'>Details</button> </p>
         <button class="col-sm-6 btn btn-success pull-right" ng-click="sendMessage(worker.workeremail)">send message</button>      
         </div>
       </div>
@@ -60,3 +64,5 @@
 </div>
 
 </div>
+
+

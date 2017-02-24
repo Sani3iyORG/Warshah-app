@@ -4,11 +4,9 @@ var utils = require('../config/utils.js');
 var nodemailer = require('nodemailer');
 module.exports = {
   signup: function (req, res) {
-    console.log(req.body);
     TradeWorker.findOne({workeremail : req.body.email})
     .exec(function (error, user) {
       if(user){
-        console.log(user);
         res.status(500).send({error:'TradeWorker is already exist!'});
       }else{
         var newTradeWorker = new TradeWorker ({
@@ -43,8 +41,7 @@ module.exports = {
         if(!user){
           res.status(500).send({message: 'this account does not found!'})
         } else {
-          console.log(user.password);
-          console.log(req.body.password);
+
           if(user.password === req.body.password) {
             var token = jwt.encode(user, 'secret');
             res.setHeader('x-access-token',token);
@@ -78,12 +75,10 @@ module.exports = {
   });
   },
   updateProfile:function(req,res){
-    console.log(req.user)
     TradeWorker.findById(req.user._id,function (error, worker) {
       if(error){
         res.status(500).send({error:error.massage});
       }else{
-        console.log(TradeWorker.isNew,'dfdasgdag')
         TradeWorker.update(worker,req.body,function(err,newworker){
          if(err){
           res.status(500).send({error: err});
@@ -131,7 +126,13 @@ module.exports = {
         worker.masseges.splice(i,1)
       }
     }
-    res.json(worker.masseges)
+    worker.save(function(err,worker){
+      if(err){
+        res.status(500).send('some thing went wrong')
+      }else{
+        res.status(200).send('massege has been deleted successfully')
+      }
+    })
   }  
 });
   },
@@ -158,34 +159,32 @@ module.exports = {
 
        transporter.sendMail(mailOptions, function(error, info){
         if(error){
-         console.log(error);
-         res.json({Message: 'error'});
+         res.json({Message: 'opss, some thing went wrong please try later'});
        }else{
-         console.log('Message sent: ' + info.response);
-         res.json({Message: info.response});
+         res.json({Message: 'your e-mail has been sent successfully'});
        };
      });
-  },
-   deactive:function(req,res){
-    TradeWorker.findById(req.user._id,function(err,worker){
-      if(err){
-        res.status(500).send('err xxxx');
-      }else{
-        worker.update(worker,{active:false},function(err,newworker){
-          if(err){
-            res.status(500).send('err');  
-          }else{
-            console.log(worker)
-            res.json(newworker);
-          }
-        })
-          }
-    })
+     },
 
-}
+     deactive:function(req,res){
+      TradeWorker.findById(req.user._id,function(err,worker){
+        if(err){
+          res.status(500).send('err xxxx');
+        }else{
+          worker.update(worker,{active:false},function(err,newworker){
+            if(err){
+              res.status(500).send('err');  
+            }else{
+              res.json(newworker);
+            }
+          })
+        }
+      })
+
+    }
 
     
 
-  
-}
+
+  }
 
