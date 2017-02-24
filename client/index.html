@@ -1,25 +1,19 @@
 <html>
 <head>
   <title>Warshah</title>
-  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/login.css" />
   <link rel="stylesheet" href="/css/sideNav.css" />
 
-  <!-- script link -->
-  <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script> -->
- <!--   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js"></script>
-   <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.6.0.js" type="text/javascript"></script> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.11/angular.min.js"></script>
+  <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.6.0.js" type="text/javascript"></script>
+  <script src="https://m-e-conroy.github.io/angular-dialog-service/javascripts/dialogs.min.js" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.11/angular-route.js"></script>
 
-  <script src="/bower_components/jquery/dist/jquery.js"></script>
-  <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
-  <script src="/bower_components/angular/angular.js"></script>
-  <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.6.0.js" type="text/javascript"></script>
-  <script src="http://m-e-conroy.github.io/angular-dialog-service/javascripts/dialogs.min.js" type="text/javascript"></script>
-  <script src="/bower_components/angular-route/angular-route.js"></script>
-  <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
-<!--   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"</script> -->
   <script src="navScript.js"></script>
   <script src="/app/services/services.js"></script>
   <script src="/app/user/user.js"></script>
@@ -56,15 +50,15 @@
    <li ng-hide="isLogged" class="dropdown">
     <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Services <span class="caret"></span></a>
     <ul class="dropdown-menu">
-      <li><a>Smith</a></li>
-      <li><a>Plumber</a></li>
-      <li><a>Painter</a></li>
-      <li><a>Carpenter</a></li>
-      <li><a>Electricity technician</a></li>
+      <li ng-click='searchInput="Smith"'><a>Smith</a></li>
+      <li ng-click='searchInput="Plumber"'><a>Plumber</a></li>
+      <li ng-click='searchInput="Painter"'><a>Painter</a></li>
+      <li ng-click='searchInput="Carpenter"'><a>Carpenter</a></li>
+      <li ng-click='searchInput="Electricity"'><a>Electricity technician</a></li>
     </ul>
   </li>
-  <li ng-hide="isLogged"><a href="#footer">contact us</a></li>
-  <li ng-show="isLogged"> <a onclick="openNav()">&#9776; open</a> </li>
+<!--   <li ng-hide="isLogged"><a href="#footer">contact us</a></li>
+ -->  <li ng-show="isLogged"> <a onclick="openNav()">&#9776; open</a> </li>
 </ul>
 <form class="navbar-form navbar-left">
   <div class="form-group">
@@ -90,9 +84,10 @@
 
 
 <!-- the ng-view directive is where our templates will be loaded into when naviagted to -->
-<div ng-view></div>
+<div ng-view style="min-height: calc(100vh - 176px)"></div>
 
 <!-- footer -->
+<div class="col-sm-8 col-sm-offset-2" align="middle">
 <div class="footer">
   <a href="https://www.facebook.com/profile.php?id=100015323349284" target="_blank">
     <img src="image/facebook.png" width="40px" height="40px" /></a>
@@ -101,6 +96,6 @@
       <a href="index.html"><img src="image/whatsapp.png" width="40px" height="40px" /></a>
       <h5 id="footer">copy  right &copy Warsha Team</h5>
     </div>
-
-  </body>
-  </html>
+    </div>
+</body>
+</html>
