@@ -41,11 +41,16 @@ module.exports = {
         if(!user){
           res.status(500).send({message: 'this account does not found!'})
         } else {
-
           if(user.password === req.body.password) {
-            var token = jwt.encode(user, 'secret');
-            res.setHeader('x-access-token',token);
-            res.json({token: token, userId : user._id});
+            TradeWorker.update(user,{active:true},function(err,complete){
+              if(err){
+                res.status(500).send({message: err.message})
+              } else {
+                var token = jwt.encode(user, 'secret');
+                res.setHeader('x-access-token',token);
+                res.json({token: token, userId : user._id});
+              }
+            })
           }else{
             res.status(500).send({message: 'password is not correct!'});
           }   
@@ -137,54 +142,44 @@ module.exports = {
 });
   },
   sendemail: function(req,res){
-    // the request should look like this 
-    //{ "email":"example@gmail.com",
-        //"name":"ahmed",
-        //"msg":"hello world "
-        //}
-        var transporter = nodemailer.createTransport({
-          service: 'Gmail',
-          auth: {
-           user: 'warsha.services@gmail.com', 
-           pass: 'AAwarshaAA1' 
-         }
-       });
-        var mailOptions = {
-         from: 'warsha.services@gmail.com',
-         to:req.body.email , 
-         subject: 'From '+ req.body.name , 
-         text: req.body.msg
+    var transporter = nodemailer.createTransport({
+      service: 'Gmail',
+      auth: {
+       user: 'warsha.services@gmail.com', 
+       pass: 'AAwarshaAA1' 
+     }
+   });
+    var mailOptions = {
+     from: 'warsha.services@gmail.com',
+     to:req.body.email , 
+     subject: 'From '+ req.body.name , 
+     text: req.body.msg
 
-       };
+   };
 
-       transporter.sendMail(mailOptions, function(error, info){
-        if(error){
-         res.json({Message: 'opss, some thing went wrong please try later'});
-       }else{
-         res.json({Message: 'your e-mail has been sent successfully'});
-       };
-     });
-     },
+   transporter.sendMail(mailOptions, function(error, info){
+    if(error){
+     res.json({Message: 'opss, some thing went wrong please try later'});
+   }else{
+     res.json({Message: 'your e-mail has been sent successfully'});
+   };
+ });
+ },
 
-     deactive:function(req,res){
-      TradeWorker.findById(req.user._id,function(err,worker){
+ deactive:function(req,res){
+  TradeWorker.findById(req.user._id,function(err,worker){
+    if(err){
+      res.status(500).send({error: 'faild to find user!'});
+    }else{
+      worker.update(worker,{active:false},function(err,newworker){
         if(err){
-          res.status(500).send('err xxxx');
+          res.status(500).send({error: 'somthing went wrong, please try again'});  
         }else{
-          worker.update(worker,{active:false},function(err,newworker){
-            if(err){
-              res.status(500).send('err');  
-            }else{
-              res.json(newworker);
-            }
-          })
+          res.status(201).send();
         }
       })
-
     }
-
-    
-
-
-  }
+  })
+}
+}
 
