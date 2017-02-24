@@ -64,7 +64,7 @@ module.exports = {
   getAllTradeWorker : function (req, res) {
     TradeWorker.find({active:true}).exec(function (err, allTradWorker) {
       if(err){
-        res.status(500).send('err');
+        res.status(500).send({error: err});
       }else{
         res.status(200).send(allTradWorker);
       }
@@ -73,7 +73,7 @@ module.exports = {
   getProfile : function (req, res) {
     TradeWorker.findById(req.user._id,function(err,worker){
      if(err){
-      res.status(500).send('err');
+      res.status(500).send({error: err});
     }else{
       res.status(200).send(worker);
     }  
@@ -171,11 +171,11 @@ module.exports = {
     if(err){
       res.status(500).send({error: 'faild to find user!'});
     }else{
-      worker.update(worker,{active:false},function(err,newworker){
+      TradeWorker.update(worker,{active:false},function(err,newworker){
         if(err){
           res.status(500).send({error: 'somthing went wrong, please try again'});  
         }else{
-          res.status(201).send();
+          res.status(201).send(newworker);
         }
       })
     }

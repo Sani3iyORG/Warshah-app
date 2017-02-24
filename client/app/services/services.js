@@ -73,11 +73,21 @@ angular.module('myapp.services', [])
     })
   }
 
+  var deactive = function () {
+    return $http({
+      method: 'POST',
+      url: '/api/deactive'
+    }).then(function(resp) {
+      return resp
+    })
+  }
+
   return {
     worker: worker,
     insert : insert,
     getAll : getAll,
     update : update,
-    fetch : fetch
+    fetch : fetch,
+    deactive: deactive
   }
 })
