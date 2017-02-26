@@ -13,6 +13,7 @@
     "angular-ui-bootstrap": "^2.5.0",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "*",
+    "eslint": "^3.16.1",
     "express": "^4.14.1",
     "jwt-simple": "^0.5.1",
     "mongoose": "*",
