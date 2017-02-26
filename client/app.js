@@ -8,7 +8,7 @@ angular.module('myapp', [
   'myapp.services',
   'myapp.sendMessage',
   'myapp.sendMessageEmail',
-  'ngRoute'
+  'ngRoute',
 ])
 
 .config(function($routeProvider, $locationProvider, $httpProvider) {
@@ -16,64 +16,63 @@ angular.module('myapp', [
   $routeProvider
   .when('/tradeworkerSignup', {
     templateUrl: 'app/tradeworker/tradeworker.html',
-    controller: 'TradeworkerContr'                 
+    controller: 'TradeworkerContr',                 
   })
   .when('/signin', {
     templateUrl: 'app/user/login.html',
-    controller: 'UserController'                 
+    controller: 'UserController',                 
   })
   .when('/welcome', {
     templateUrl: 'app/home/welcome.html',
-    controller: 'HomeCtrl'              
+    controller: 'HomeCtrl',              
   })
   .when('/messages', {
     templateUrl: 'app/messages/messages.html',
-    controller: 'MessagesCtrl'
+    controller: 'MessagesCtrl',
   })
   .when('/profile', {
     templateUrl: 'app/profile/profile.html',
-    controller: 'ProfileCtrl'
+    controller: 'ProfileCtrl',
   })
   .otherwise({
-    redirectTo: '/welcome'
+    redirectTo: '/welcome',
   });
 
   $httpProvider.interceptors.push('AttachTokens');
 })
 
-.factory('AttachTokens', function ($window) {
-  var attach = {
-    request: function (object) {
-      var jwt = $window.localStorage.getItem('tradeworker');
+.factory('AttachTokens', function($window) {
+  let attach = {
+    request: function(object) {
+      let jwt = $window.localStorage.getItem('tradeworker');
       if (jwt) {
         object.headers['x-access-token'] = jwt;
       }
       object.headers['Allow-Control-Allow-Origin'] = '*';
       return object;
-    }
+    },
   };
   return attach;
 })
 
-.factory('Auth', function ($http, $location, $window, $rootScope) {
-
-  var auth = {};
-  auth.saveToken = function (token) {
+.factory('Auth', function($http, $location, $window, $rootScope) {
+  let auth = {};
+  auth.saveToken = function(token) {
     $window.localStorage['tradeworker'] = token;
   };
 
-  auth.getToken = function () {
+  auth.getToken = function() {
     return $window.localStorage['tradeworker'];
   };
 
-  auth.isAuth = function () {
+  auth.isAuth = function() {
     return !!$window.localStorage.getItem('tradeworker');
   };
 
   auth.currentUser = function() {
     if (auth.isAuth()) {
-      var token = auth.getToken();
-      var payload = JSON.parse($window.atob(token.split('.')[1]));
+      let token = auth.getToken();
+      let payload = JSON.parse($window.atob(token.split('.')[1]));
       return payload.username;
     }
   };
@@ -86,30 +85,28 @@ angular.module('myapp', [
   auth.getProfile = function() {
     return $http({
       method: 'GET',
-      url: '/profile'
+      url: '/profile',
     }).success(function(resp) {
       return resp;
-    }).error(function (data, status, header, config) {
+    }).error(function(data, status, header, config) {
       alert('somt thing went wrong');
     });
   };
 
 
-
-
-  return auth;  
+  return auth;
 })
-.controller('myappCtrl', function ($scope, $rootScope, $http, $location, User, Auth) {
+.controller('myappCtrl', function($scope, $rootScope, $http, $location, User, Auth) {
   $scope.logOut = function() {
     Auth.logOut();
   };
 })
 
-.run(function ($rootScope, $location, Auth) {
+.run(function($rootScope, $location, Auth) {
   $rootScope.isLogged = false;
-  var goTo;
-  $rootScope.$on('$routeChangeStart', function (evt, next, current) {
-    //console.log(Auth.isAuth());
+  let goTo;
+  $rootScope.$on('$routeChangeStart', function(evt, next, current) {
+    // console.log(Auth.isAuth());
     if (next.$$route && ( next.$$route.originalPath === '/profile' || next.$$route.originalPath === '/messages' ) && !Auth.isAuth()) {
       $location.path('signin');
     } else {
@@ -117,7 +114,7 @@ angular.module('myapp', [
         $location.path(next.$$route.originalPath);
       } else {
         $location.path('/welcome');
-      } 	
+      }
     }
   });
 });

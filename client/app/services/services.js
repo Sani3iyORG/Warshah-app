@@ -1,93 +1,92 @@
 angular.module('myapp.services', [])
-.factory('User', function ($http, $location, $window) { 
-  var signin = function (user) {
+.factory('User', function($http, $location, $window) {
+  let signin = function(user) {
     return $http({
       method: 'POST',
       url: '/api/signin',
-      data: user
-    }).then(function (resp) {
+      data: user,
+    }).then(function(resp) {
       return resp.data;
     });
-  }
+  };
 
-  var signup = function (user) {
+  let signup = function(user) {
     return $http({
       method: 'POST',
       url: '/api/signup',
-      data: user
-    }).then(function (resp) {
+      data: user,
+    }).then(function(resp) {
       return resp.data;
     });
-  }
+  };
 
-  var signout = function () {
+  let signout = function() {
     $location.path('/signin');
-  }
+  };
 
   return {
     signin: signin,
     signup: signup,
-    signout: signout
-  }
+    signout: signout,
+  };
 })
 
-.factory('Tradeworker',function ($http, $location) {
+.factory('Tradeworker', function($http, $location) {
+  let worker = {};
 
-  var worker = {};
-
-  var insert = function (Tradeworker) {
-    return $http({
-      method : 'POST',
-      url : '/api/signup',
-      data : Tradeworker
-    }).then(function (resp) {
-      return resp.data
-    })
-  }
-
-  var update = function (Tradeworker) {
-    return $http({
-      method : 'POST',
-      url : '/api/updateProfile',
-      data : Tradeworker
-    }).then(function (resp) {
-      return resp.data
-    })
-  }
-
-  var fetch = function() {
-    return $http({
-      method : 'GET',
-      url : '/api/getProfile'
-    }).then(function (resp) {
-      return resp.data
-    })
-  }
-
-  var getAll = function () {
-    return $http({
-      method : 'GET',
-      url : '/api/all'
-    }).then(function (resp) {
-      return resp.data
-    })
-  }
-
-  var deactive = function () {
+  let insert = function(Tradeworker) {
     return $http({
       method: 'POST',
-      url: '/api/deactive'
+      url: '/api/signup',
+      data: Tradeworker,
     }).then(function(resp) {
-      return resp
-    })
-  }
+      return resp.data;
+    });
+  };
+
+  let update = function(Tradeworker) {
+    return $http({
+      method: 'POST',
+      url: '/api/updateProfile',
+      data: Tradeworker,
+    }).then(function(resp) {
+      return resp.data;
+    });
+  };
+
+  let fetch = function() {
+    return $http({
+      method: 'GET',
+      url: '/api/getProfile',
+    }).then(function(resp) {
+      return resp.data;
+    });
+  };
+
+  let getAll = function() {
+    return $http({
+      method: 'GET',
+      url: '/api/all',
+    }).then(function(resp) {
+      return resp.data;
+    });
+  };
+
+  let deactive = function() {
+    return $http({
+      method: 'POST',
+      url: '/api/deactive',
+    }).then(function(resp) {
+      return resp;
+    });
+  };
 
   return {
     worker: worker,
-    insert : insert,
-    getAll : getAll,
-    update : update,
-    fetch : fetch,
-    deactive: deactive
-  }
-})
+    insert: insert,
+    getAll: getAll,
+    update: update,
+    fetch: fetch,
+    deactive: deactive,
+  };
+});

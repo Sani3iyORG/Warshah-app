@@ -1,45 +1,39 @@
- angular.module('myapp.User',[])
+ angular.module('myapp.User', [])
 
-.controller('UserController',function ($scope, $rootScope, $http,$location,User, Auth){
+.controller('UserController', function($scope, $rootScope, $http, $location, User, Auth) {
 	$scope.user = {};
 	$scope.signupuser={};
 	$scope.ifuser=true;
 
-	$scope.signin = function () {
+	$scope.signin = function() {
 		User.signin($scope.user)
-		.then(function (data) {
+		.then(function(data) {
 			$scope.ifuser=false;
 			Auth.saveToken(data.token);
 			$rootScope.isLogged = true;
 			$location.path('/profile');
 		})
-		.catch(function (error) {
+		.catch(function(error) {
 			console.log(error);
 			$scope.ifuser=false;
-			$scope.email="";
-			$scope.password="";
+			$scope.email='';
+			$scope.password='';
 			alert(error.data.message);
-		})
-	}
+		});
+	};
 
- 	$scope.signup = function (newUser) {
+ 	$scope.signup = function(newUser) {
         User.signup(newUser)
-        .then(function (user) {
+        .then(function(user) {
             $scope.signin({
-                username:newUser.username,
-                password:newUser.password
+                username: newUser.username,
+                password: newUser.password,
             });
         })
-        .catch(function (error) {
+        .catch(function(error) {
         	console.log(error);
-            console.log("user already exist");
-        })
-    }
-})
+            console.log('user already exist');
+        });
+    };
+});
 
-
-   
-
-
-
-	    
