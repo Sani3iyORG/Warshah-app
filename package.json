@@ -1,13 +1,13 @@
 {
   "name": "Warshah",
   "version": "1.0.0",
-  "description": "simple app",
+  "description": "WarshahApp, this project was built basically by authors below and then was refactored and enahnced by adding new features by dentisto team",
   "main": "server.js",
   "scripts": {
     "start": "nodemon server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "moamar & duaa & marwa & kamal ",
+  "author": "moamar & duaa & marwa & kamal  ",
   "license": "ISC",
   "dependencies": {
     "angular-ui-bootstrap": "^2.5.0",
@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "eslint": "^3.16.1",
+    "eslint-config-google": "^0.7.1",
     "eslint-config-standard": "^6.2.1",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-promise": "^3.4.2",
