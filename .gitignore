@@ -17,6 +17,8 @@ Icon
 .log
 node_modules/
 db/
+server/.eslintrc.js
+client/eslinterc.js
 client/bower_components
 client/lib/
 client/dist/
