@@ -33,8 +33,4 @@
     $rootScope.email=workeremail;
     dlg = $dialogs.create('./app/home/sendMessage/sendMessage.html', 'sendMessageCtrl', {}, {key: false, back: 'static'});
   };
-
-  function ImageCarouselDemoCtrl($scope) {
-
-  }
 });
