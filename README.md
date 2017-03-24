@@ -3,11 +3,16 @@
 >find the Tradeworker easily anytime to fix anything at home 
 
 ## Team
-
+  original Dev Team
   - __Product Owner__: Dua'a Maloalain
   - __Scrum Master__: Moamar Alswedan
   - __Development Team Members__: Marwa , Kamal
-
+  
+  
+  Sani3iyORG Dev team
+  - __Scrum Master__: Hasn Arafha
+  - __Development Team Members__: Abdulazeez Abdulrazzaq, Rwaida Almehanni, Mhd Salim Bakri, Hasn Arafha
+  
 ## Table of Contents
 
 1. [Usage](#Usage)
